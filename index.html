@@ -59,6 +59,27 @@
   <link rel="preconnect" href="https://assets.calendly.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   
+  <!-- DNS Prefetch for faster loading -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//assets.calendly.com">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  
+  <!-- Resource Hints -->
+  <link rel="preload" href="hero.jpg" as="image" fetchpriority="high">
+  <link rel="preload" href="logo_big.png" as="image" fetchpriority="high">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" as="style">
+  
+  <!-- Critical CSS inline -->
+  <style>
+    /* Critical above-the-fold styles */
+    .hero-section { min-height: 60vh; }
+    .mobile-optimized { -webkit-font-smoothing: antialiased; }
+    @media (max-width: 768px) {
+      .hero-section { min-height: 50vh; }
+      .mobile-text { font-size: clamp(1rem, 4vw, 1.125rem); }
+    }
+  </style>
+  
   <!-- GA4 placeholder (optional) -->
   <!--
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -269,17 +290,83 @@
     .toast { background: rgba(15,17,21,.95); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 8px 24px rgba(0,0,0,.35); }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     .no-scrollbar::-webkit-scrollbar { display: none; }
+    
+    /* Mobile Optimizations */
+    @media (max-width: 768px) {
+      .hero-overlay { background: linear-gradient(180deg, rgba(15,17,21,.60) 0%, rgba(15,17,21,.80) 40%, rgba(15,17,21,.95) 100%); }
+      .ring-3d { box-shadow: inset 0 1px 2px rgba(255,255,255,.15), inset 0 -2px 4px rgba(0,0,0,.45), 0 4px 12px rgba(0,0,0,.35); }
+      .btn-primary { background: linear-gradient(180deg, #D3873A 0%, #C77A2B 100%); }
+      .btn-primary:active { transform: scale(0.98); }
+      
+      /* Mobile-specific performance */
+      .mobile-optimize { will-change: auto; }
+      .mobile-optimize img { image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; }
+      
+      /* Touch-friendly sizing */
+      .touch-target { min-height: 44px; min-width: 44px; }
+      
+      /* Mobile navigation optimizations */
+      .mobile-nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+      
+      /* Mobile gallery optimizations */
+      .mobile-gallery img { aspect-ratio: 1; object-fit: cover; }
+      
+      /* Mobile form optimizations */
+      .mobile-form input, .mobile-form select, .mobile-form textarea { 
+        font-size: 16px; /* Prevents zoom on iOS */
+        -webkit-appearance: none;
+        border-radius: 12px;
+      }
+      
+      /* Mobile button optimizations */
+      .mobile-btn { 
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+      }
+    }
+    
+    /* Performance Optimizations */
+    .performance-optimize {
+      contain: layout style paint;
+      will-change: auto;
+    }
+    
+    .lazy-load {
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    
+    .lazy-load.loaded {
+      opacity: 1;
+    }
+    
+    /* Critical CSS for above-the-fold */
+    .critical-render {
+      content-visibility: auto;
+      contain-intrinsic-size: 0 500px;
+    }
+    
+    /* Smooth scrolling optimization */
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    }
   </style>
 </head>
 
 <body class="bg-charcoal text-white antialiased">
   <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] bg-ink text-white px-4 py-2 rounded-lg border border-white/10">Skip to content</a>
   <!-- Nav -->
-  <header class="sticky top-0 z-50 backdrop-blur bg-ink/70">
+  <header class="sticky top-0 z-50 backdrop-blur bg-ink/70 mobile-nav">
     <div class="max-w-7xl mx-auto px-4 pt-3 md:pt-4">
       <div class="w-full flex justify-center">
         <a href="#main" class="block" aria-label="Go to top">
-          <img src="logo_big.png" onerror="this.src='logo.PNG'" alt="CUT IT OUT LEE logo" class="h-16 w-16 md:h-24 md:w-24 lg:h-28 lg:w-28 rounded-full ring-4 md:ring-6 ring-brandblue ring-offset-2 ring-offset-ink ring-3d drop-shadow-[0_10px_28px_rgba(0,0,0,0.55)]" />
+          <img src="logo_big.png" onerror="this.src='logo.PNG'" alt="CUT IT OUT LEE logo" class="h-16 w-16 md:h-24 md:w-24 lg:h-28 lg:w-28 rounded-full ring-4 md:ring-6 ring-brandblue ring-offset-2 ring-offset-ink ring-3d drop-shadow-[0_10px_28px_rgba(0,0,0,0.55)] mobile-optimize" />
         </a>
       </div>
       <nav class="hidden md:flex justify-center mt-3 md:mt-4">
@@ -291,7 +378,7 @@
           <a data-nav href="#book" class="relative px-3 py-1.5 rounded-full text-sm hover:text-brandblue focus:outline-none">Book</a>
           <a data-nav href="#contact" class="relative px-3 py-1.5 rounded-full text-sm hover:text-brandblue focus:outline-none">Contact</a>
           <span class="mx-1 h-5 w-px bg-white/10"></span>
-          <a href="#book" class="btn-primary shadow-btn px-4 py-2 rounded-full text-sm font-semibold" aria-label="Book appointment via Calendly">Book Now</a>
+          <a href="#book" class="btn-primary shadow-btn px-4 py-2 rounded-full text-sm font-semibold mobile-btn touch-target" aria-label="Book appointment via Calendly">Book Now</a>
         </div>
       </nav>
       <div class="md:hidden mt-2 overflow-x-auto no-scrollbar">
@@ -302,7 +389,7 @@
           <a data-nav href="#pricing" class="px-3 py-1.5 rounded-full text-sm bg-[#10131a] border border-white/10">Pricing</a>
           <a data-nav href="#book" class="px-3 py-1.5 rounded-full text-sm bg-[#10131a] border border-white/10">Book</a>
           <a data-nav href="#contact" class="px-3 py-1.5 rounded-full text-sm bg-[#10131a] border border-white/10">Contact</a>
-          <a href="#book" class="btn-primary shadow-btn px-3 py-2 rounded-full text-xs font-semibold ml-auto" aria-label="Book appointment">Book</a>
+          <a href="#book" class="btn-primary shadow-btn px-3 py-2 rounded-full text-xs font-semibold ml-auto mobile-btn touch-target" aria-label="Book appointment">Book</a>
         </div>
       </div>
     </div>
@@ -310,13 +397,13 @@
 
   <!-- Hero -->
   <section class="relative" id="main">
-    <img src="hero.jpg" alt="Barber cutting hair" class="w-full h-[72vh] object-cover" loading="eager" decoding="async">
+    <img src="hero.jpg" alt="Barber cutting hair" class="w-full h-[72vh] md:h-[72vh] h-[60vh] object-cover" loading="eager" decoding="async" fetchpriority="high">
     <div class="absolute inset-0 hero-overlay"></div>
     <div class="absolute inset-0 flex items-center">
       <div class="max-w-7xl mx-auto px-4">
         <div class="max-w-2xl">
           <div class="flex items-center gap-3 mb-4">
-            <img src="logo.PNG" class="h-14 w-14 rounded-full ring-4 ring-brandblue ring-offset-2 ring-offset-ink ring-3d" alt="logo">
+            <img src="logo.PNG" class="h-14 w-14 rounded-full ring-4 ring-brandblue ring-offset-2 ring-offset-ink ring-3d mobile-optimize" alt="logo">
             <p class="uppercase tracking-widest text-sm font-bold text-white">Douglasville • Mobile Barber</p>
           </div>
           <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
@@ -324,8 +411,8 @@
           </h1>
           <p class="mt-4 text-lg text-white/80">I’m Lee—professional barber with 4+ years behind the chair. I bring the shop to you across Douglasville and nearby areas.</p>
           <div class="mt-6 flex flex-wrap gap-3">
-            <a href="#book" class="btn-primary shadow-btn px-6 py-3 rounded-xl font-semibold">Book a Cut</a>
-            <a href="tel:+14044417159" class="px-6 py-3 rounded-xl border border-white/15 hover:border-brandblue/60">Call (404) 441-7159</a>
+            <a href="#book" class="btn-primary shadow-btn px-6 py-3 rounded-xl font-semibold mobile-btn touch-target">Book a Cut</a>
+            <a href="tel:+14044417159" class="px-6 py-3 rounded-xl border border-white/15 hover:border-brandblue/60 mobile-btn touch-target">Call (404) 441-7159</a>
           </div>
         </div>
       </div>
@@ -345,7 +432,7 @@
         </ul>
       </div>
       <div class="rounded-2xl overflow-hidden ring-4 ring-brandblue/30">
-        <img src="about.jpg" alt="Mobile barber kit and chair" class="w-full h-full object-cover" loading="lazy" decoding="async">
+        <img src="about.jpg" alt="Mobile barber kit and chair" class="w-full h-full object-cover" loading="lazy" decoding="async" class="mobile-optimize">
       </div>
     </div>
   </section>
@@ -380,10 +467,10 @@
       <p class="text-lg text-white/70 max-w-2xl mx-auto">Precision cuts, clean lines, and styles that speak for themselves. Every client gets the same attention to detail.</p>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mobile-gallery">
       <!-- Gallery Item 1 -->
-      <div class="group relative overflow-hidden rounded-2xl bg-[#12151c] border border-white/10 hover:border-brandblue/30 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(43,123,187,0.15)]">
-        <img src="g1.jpg" alt="Signature fade haircut with crisp lines" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
+      <div class="group relative overflow-hidden rounded-2xl bg-[#12151c] border border-white/10 hover:border-brandblue/30 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(43,123,187,0.15)] performance-optimize">
+        <img src="g1.jpg" alt="Signature fade haircut with crisp lines" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105 lazy-load" loading="lazy" decoding="async" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
           <h3 class="text-lg font-semibold text-white mb-1">Signature Fade</h3>
@@ -445,7 +532,7 @@
     <!-- Gallery CTA -->
     <div class="text-center mt-12">
       <p class="text-lg text-white/70 mb-6">Ready to get your own fresh cut?</p>
-      <a href="#book" class="btn-primary shadow-btn px-8 py-4 rounded-xl text-lg font-semibold inline-flex items-center gap-2">
+      <a href="#book" class="btn-primary shadow-btn px-8 py-4 rounded-xl text-lg font-semibold inline-flex items-center gap-2 mobile-btn touch-target">
         Book Your Cut
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
@@ -514,7 +601,7 @@
         </ul>
       </div>
 
-      <form id="contactForm" class="p-6 rounded-2xl bg-ink border border-white/10">
+      <form id="contactForm" class="p-6 rounded-2xl bg-ink border border-white/10 mobile-form">
         <div class="grid sm:grid-cols-2 gap-4">
           <div>
             <label for="name" class="text-sm text-white/70">Name</label>
@@ -547,7 +634,7 @@
           <label for="message" class="text-sm text-white/70">Message</label>
           <textarea id="message" name="message" rows="4" class="mt-1 w-full rounded-lg bg-[#0e1117] border border-white/10 p-3" placeholder="Tell me what you need…"></textarea>
         </div>
-        <button class="btn-primary shadow-btn w-full mt-6 py-3 rounded-xl font-semibold" type="submit">Send Message</button>
+        <button class="btn-primary shadow-btn w-full mt-6 py-3 rounded-xl font-semibold mobile-btn touch-target" type="submit">Send Message</button>
         <p id="formStatus" class="mt-3 text-sm" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -568,6 +655,54 @@
   <div id="toast" class="toast fixed right-4 top-4 z-[70] px-4 py-3 rounded-xl hidden" role="status" aria-live="polite"></div>
 
   <script>
+    // Performance optimizations
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+
+    // Mobile performance optimizations
+    if ('connection' in navigator) {
+      if (navigator.connection.effectiveType === 'slow-2g' || navigator.connection.effectiveType === '2g') {
+        document.body.classList.add('low-bandwidth');
+      }
+    }
+
+    // Touch device detection
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) {
+      document.body.classList.add('touch-device');
+    }
+
+    // Lazy loading enhancement
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.classList.add('loaded');
+          observer.unobserve(img);
+        }
+      });
+    });
+
+    lazyImages.forEach(img => imageObserver.observe(img));
+
+    // Mobile navigation optimization
+    let lastScrollTop = 0;
+    const header = document.querySelector('header');
+    
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop && scrollTop > 100) {
+        header.style.transform = 'translateY(-100%)';
+      } else {
+        header.style.transform = 'translateY(0)';
+      }
+      lastScrollTop = scrollTop;
+    }, { passive: true });
+
     document.getElementById('y').textContent = new Date().getFullYear();
 
     // Init EmailJS
