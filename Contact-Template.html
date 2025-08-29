@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <body style="font-family:Arial,Helvetica,sans-serif;color:#111;background:#f7f7f9;padding:24px;">
+    <div style="max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #eaeaea;border-radius:12px;overflow:hidden;">
+      <div style="padding:20px;background:#0F1115;color:#fff;">
+        <h2 style="margin:0;">New Inquiry — CUT IT OUT LEE</h2>
+      </div>
+
+      <div style="padding:20px;">
+        <p>You have a new website message:</p>
+        <table style="width:100%;border-collapse:collapse;">
+          <tr>
+            <td style="padding:8px;border-bottom:1px solid #eee;width:160px;"><strong>Name</strong></td>
+            <td style="padding:8px;border-bottom:1px solid #eee;">{{name}}</td>
+          </tr>
+          <tr>
+            <td style="padding:8px;border-bottom:1px solid #eee;"><strong>Email</strong></td>
+            <td style="padding:8px;border-bottom:1px solid #eee;">{{email}}</td>
+          </tr>
+          <tr>
+            <td style="padding:8px;border-bottom:1px solid #eee;"><strong>Phone</strong></td>
+            <td style="padding:8px;border-bottom:1px solid #eee;">{{phone}}</td>
+          </tr>
+          <tr>
+            <td style="padding:8px;border-bottom:1px solid #eee;"><strong>Service</strong></td>
+            <td style="padding:8px;border-bottom:1px solid #eee;">{{service}}</td>
+          </tr>
+          <tr>
+            <td style="padding:8px;border-bottom:1px solid #eee;"><strong>Preferred Date</strong></td>
+            <td style="padding:8px;border-bottom:1px solid #eee;">{{date}}</td>
+          </tr>
+          <tr>
+            <td style="padding:8px;border-bottom:1px solid #eee;"><strong>Message</strong></td>
+            <td style="padding:8px;border-bottom:1px solid #eee;white-space:pre-wrap;">{{message}}</td>
+          </tr>
+        </table>
+
+        <p style="margin-top:16px;">Quick actions:</p>
+        <ul>
+          <li><a href="mailto:{{email}}?subject=Thanks%20for%20reaching%20out!">Reply via email</a></li>
+          <li><a href="{{booking_url}}">Open Calendly booking</a></li>
+          <li><a href="tel:{{phone}}">Call {{phone}}</a></li>
+        </ul>
+      </div>
+
+      <div style="padding:16px;background:#f1f3f5;color:#444;font-size:12px;text-align:center;">
+        Sent from CUT IT OUT LEE website
+      </div>
+    </div>
+  </body>
+</html>

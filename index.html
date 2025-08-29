@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CUT IT OUT LEE — Mobile Barber in Douglasville, GA</title>
+  <meta name="description" content="Precision fades, beard trims, and house-calls. Book CUT IT OUT LEE — a mobile barber serving Douglasville and nearby areas. Fast, professional, 4+ years experience." />
+  <link rel="icon" href="logo.PNG" />
+  <link rel="canonical" href="https://cutitoutlee.cochranfilms.com/" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#0F1115" />
+  <!-- GA4 placeholder (optional) -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+  <meta property="og:title" content="CUT IT OUT LEE — Mobile Barber" />
+  <meta property="og:description" content="Book a pro mobile barber in Douglasville. Fades, tapers, beard trims, and house-calls." />
+  <meta property="og:image" content="og-cover.jpg" />
+  <meta property="og:type" content="website" />
+
+  <!-- Tailwind (no build step) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            charcoal: '#0F1115',
+            ink: '#171923',
+            brandblue: '#2B7BBB',
+            accent: '#C77A2B',
+            ring: '#1A1F2E'
+          },
+          boxShadow: {
+            'glow': '0 0 0 4px rgba(43,123,187,0.15)',
+            'btn': '0 6px 18px rgba(199,122,43,0.35)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <!-- Calendly widget -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <!-- LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Barbershop",
+    "name":"CUT IT OUT LEE",
+    "image":"https://cutitoutlee.cochranfilms.com/og-cover.jpg",
+    "address":{"@type":"PostalAddress","addressLocality":"Douglasville","addressRegion":"GA","addressCountry":"US"},
+    "email":"mailto:cutitoutlee@gmail.com",
+    "telephone":"+14044417159",
+    "areaServed":"Douglasville, GA",
+    "url":"https://cutitoutlee.cochranfilms.com/"
+  }
+  </script>
+
+  <style>
+    :root { --brand-blue: #2B7BBB; --charcoal: #0F1115; --ink: #171923; --accent: #C77A2B; --ring: #1A1F2E; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol'; }
+    *:focus-visible { outline: 3px solid var(--brand-blue); outline-offset: 2px; }
+    .hero-overlay { background: linear-gradient(180deg, rgba(15,17,21,.50) 0%, rgba(15,17,21,.75) 60%, rgba(15,17,21,.95) 100%); }
+    .ring-3d {
+      background: radial-gradient(120% 120% at 15% 20%, #3a8fcb 0%, #2B7BBB 40%, #205c8a 60%, #163f5f 85%, #0d2740 100%);
+      box-shadow: inset 0 2px 3px rgba(255,255,255,.15), inset 0 -3px 6px rgba(0,0,0,.45), 0 6px 18px rgba(0,0,0,.35);
+      border: 2px solid #0b1a2b;
+    }
+    .btn-primary { background: linear-gradient(180deg, #D3873A 0%, #C77A2B 100%); }
+    .btn-primary:hover { filter: brightness(1.05); }
+    .toast { background: rgba(15,17,21,.95); border: 1px solid rgba(255,255,255,.12); box-shadow: 0 8px 24px rgba(0,0,0,.35); }
+  </style>
+</head>
+
+<body class="bg-charcoal text-white antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] bg-ink text-white px-4 py-2 rounded-lg border border-white/10">Skip to content</a>
+  <!-- Nav -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-ink/70">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="logo.PNG" alt="CUT IT OUT LEE logo" class="h-10 w-10 rounded-full ring-2 ring-brandblue ring-offset-2 ring-offset-ink ring-3d" />
+        <span class="text-lg tracking-widest font-semibold">CUT IT OUT LEE</span>
+      </div>
+      <nav class="hidden md:flex gap-6 text-sm">
+        <a href="#about" class="hover:text-brandblue">About</a>
+        <a href="#services" class="hover:text-brandblue">Services</a>
+        <a href="#gallery" class="hover:text-brandblue">Gallery</a>
+        <a href="#pricing" class="hover:text-brandblue">Pricing</a>
+        <a href="#book" class="hover:text-brandblue">Book</a>
+        <a href="#contact" class="hover:text-brandblue">Contact</a>
+      </nav>
+      <a href="#book" class="btn-primary shadow-btn px-4 py-2 rounded-xl text-sm font-semibold" aria-label="Book appointment via Calendly">Book Now</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative" id="main">
+    <img src="hero.jpg" alt="Barber cutting hair" class="w-full h-[72vh] object-cover" loading="eager" decoding="async">
+    <div class="absolute inset-0 hero-overlay"></div>
+    <div class="absolute inset-0 flex items-center">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="max-w-2xl">
+          <div class="flex items-center gap-3 mb-4">
+            <img src="logo.PNG" class="h-14 w-14 rounded-full ring-4 ring-brandblue ring-offset-2 ring-offset-ink ring-3d" alt="logo">
+            <p class="uppercase tracking-widest text-sm text-brandblue/90">Douglasville • Mobile Barber</p>
+          </div>
+          <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
+            Precision Cuts. <span class="text-brandblue">House-Calls.</span> On Your Time.
+          </h1>
+          <p class="mt-4 text-lg text-white/80">I’m Lee—professional barber with 4+ years behind the chair. I bring the shop to you across Douglasville and nearby areas.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#book" class="btn-primary shadow-btn px-6 py-3 rounded-xl font-semibold">Book a Cut</a>
+            <a href="tel:+14044417159" class="px-6 py-3 rounded-xl border border-white/15 hover:border-brandblue/60">Call (404) 441-7159</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="max-w-7xl mx-auto px-4 py-16">
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="text-3xl font-bold">Meet Lee</h2>
+        <p class="mt-3 text-white/80">With 4+ years of professional experience, I specialize in fades, tapers, shape-ups, beard trims, and clean razor finishes. As a mobile barber, I show up equipped—so you look sharp without leaving home.</p>
+        <ul class="mt-6 space-y-2 text-white/80">
+          <li>• Licensed & insured</li>
+          <li>• Mobile service in Douglasville & nearby</li>
+          <li>• Card & contactless payments</li>
+        </ul>
+      </div>
+      <div class="rounded-2xl overflow-hidden ring-4 ring-brandblue/30">
+        <img src="about.jpg" alt="Mobile barber kit and chair" class="w-full h-full object-cover" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="bg-ink">
+    <div class="max-w-7xl mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold">Services</h2>
+      <p class="text-white/70 mt-2">A few of the most requested options. Full menu at booking.</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        <!-- Card -->
+        <div class="p-6 rounded-2xl bg-[#12151c] border border-white/10">
+          <h3 class="font-semibold text-lg">Signature Fade</h3>
+          <p class="text-white/70 mt-2">Skin, mid, or high — crisp lines and smooth transitions.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-[#12151c] border border-white/10">
+          <h3 class="font-semibold text-lg">Beard Trim & Line-Up</h3>
+          <p class="text-white/70 mt-2">Precision shaping + hot towel finish on request.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-[#12151c] border border-white/10">
+          <h3 class="font-semibold text-lg">House-Call Cut</h3>
+          <p class="text-white/70 mt-2">I bring the shop to you. Ideal for tight schedules.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="max-w-7xl mx-auto px-4 py-16">
+    <h2 class="text-3xl font-bold">Fresh Work</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
+      <img src="g1.jpg" alt="Fade haircut" class="rounded-xl" loading="lazy" decoding="async">
+      <img src="g2.jpg" alt="Beard shape-up" class="rounded-xl" loading="lazy" decoding="async">
+      <img src="g3.jpg" alt="Taper cut" class="rounded-xl" loading="lazy" decoding="async">
+      <img src="g4.jpg" alt="Line-up" class="rounded-xl" loading="lazy" decoding="async">
+      <img src="g5.jpg" alt="Razor finish" class="rounded-xl" loading="lazy" decoding="async">
+      <img src="g6.jpg" alt="Classic cut" class="rounded-xl" loading="lazy" decoding="async">
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="bg-ink">
+    <div class="max-w-7xl mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold">Simple Pricing</h2>
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="p-6 rounded-2xl bg-[#12151c] border border-white/10">
+          <h3 class="font-semibold text-lg">Cut</h3>
+          <p class="text-3xl font-extrabold mt-2">$40</p>
+          <p class="text-white/70 mt-2">Fade, taper, or classic + style.</p>
+          <a href="#book" class="btn-primary inline-block mt-4 px-4 py-2 rounded-xl shadow-btn">Book</a>
+        </div>
+        <div class="p-6 rounded-2xl bg-[#12151c] border border-white/10">
+          <h3 class="font-semibold text-lg">Cut + Beard</h3>
+          <p class="text-3xl font-extrabold mt-2">$55</p>
+          <p class="text-white/70 mt-2">Cut + beard trim & line-up.</p>
+          <a href="#book" class="btn-primary inline-block mt-4 px-4 py-2 rounded-xl shadow-btn">Book</a>
+        </div>
+        <div class="p-6 rounded-2xl bg-[#12151c] border border-white/10">
+          <h3 class="font-semibold text-lg">House-Call</h3>
+          <p class="text-3xl font-extrabold mt-2">From $75</p>
+          <p class="text-white/70 mt-2">Mobile service at your location.</p>
+          <a href="#book" class="btn-primary inline-block mt-4 px-4 py-2 rounded-xl shadow-btn">Book</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calendly -->
+  <section id="book" class="max-w-7xl mx-auto px-4 py-16">
+    <h2 class="text-3xl font-bold mb-6">Book Your Cut</h2>
+    <div class="rounded-2xl overflow-hidden ring-4 ring-brandblue/20">
+      <div class="calendly-inline-widget" data-url="https://calendly.com/cutitoutlee/30min" style="min-width:320px;height:740px;"></div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="bg-ink">
+    <div class="max-w-7xl mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold">What Clients Say</h2>
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <blockquote class="p-6 rounded-2xl bg-[#12151c] border border-white/10">“Clean fade, on time, and professional. Lee’s my go-to.”</blockquote>
+        <blockquote class="p-6 rounded-2xl bg-[#12151c] border border-white/10">“House-call was clutch before a big event. Highly recommend.”</blockquote>
+        <blockquote class="p-6 rounded-2xl bg-[#12151c] border border-white/10">“Attention to detail is top tier. Beard line-up was perfect.”</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="max-w-7xl mx-auto px-4 py-16">
+    <div class="grid md:grid-cols-2 gap-10">
+      <div>
+        <h2 class="text-3xl font-bold">Contact</h2>
+        <p class="mt-3 text-white/80">Prefer a message? I’ll get back quickly.</p>
+        <ul class="mt-6 text-white/80">
+          <li>Email: <a href="mailto:cutitoutlee@gmail.com" class="text-brandblue underline">cutitoutlee@gmail.com</a></li>
+          <li>Phone: <a href="tel:+14044417159" class="text-brandblue underline">(404) 441-7159</a></li>
+          <li>Service area: Douglasville & nearby</li>
+        </ul>
+      </div>
+
+      <form id="contactForm" class="p-6 rounded-2xl bg-ink border border-white/10">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label for="name" class="text-sm text-white/70">Name</label>
+            <input id="name" name="name" required class="mt-1 w-full rounded-lg bg-[#0e1117] border border-white/10 p-3" placeholder="Your name" />
+          </div>
+          <div>
+            <label for="phone" class="text-sm text-white/70">Phone</label>
+            <input id="phone" name="phone" class="mt-1 w-full rounded-lg bg-[#0e1117] border border-white/10 p-3" placeholder="(###) ###-####" />
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 mt-4">
+          <div>
+            <label for="email" class="text-sm text-white/70">Email</label>
+            <input id="email" name="email" type="email" required class="mt-1 w-full rounded-lg bg-[#0e1117] border border-white/10 p-3" placeholder="you@email.com" />
+          </div>
+          <div>
+            <label for="service" class="text-sm text-white/70">Service</label>
+            <select id="service" name="service" class="mt-1 w-full rounded-lg bg-[#0e1117] border border-white/10 p-3">
+              <option>Cut</option>
+              <option>Cut + Beard</option>
+              <option>House-Call</option>
+            </select>
+          </div>
+        </div>
+        <div class="mt-4">
+          <label for="date" class="text-sm text-white/70">Preferred Date</label>
+          <input id="date" name="date" type="date" class="mt-1 w-full rounded-lg bg-[#0e1117] border border-white/10 p-3" />
+        </div>
+        <div class="mt-4">
+          <label for="message" class="text-sm text-white/70">Message</label>
+          <textarea id="message" name="message" rows="4" class="mt-1 w-full rounded-lg bg-[#0e1117] border border-white/10 p-3" placeholder="Tell me what you need…"></textarea>
+        </div>
+        <button class="btn-primary shadow-btn w-full mt-6 py-3 rounded-xl font-semibold" type="submit">Send Message</button>
+        <p id="formStatus" class="mt-3 text-sm" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-ink border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <img src="logo.PNG" class="h-8 w-8 rounded-full ring-2 ring-brandblue ring-3d" alt="logo">
+        <span class="text-sm">© <span id="y"></span> CUT IT OUT LEE • Douglasville, GA</span>
+      </div>
+      <div class="text-sm text-white/70">Email: <a class="underline" href="mailto:cutitoutlee@gmail.com">cutitoutlee@gmail.com</a> • Phone: <a class="underline" href="tel:+14044417159">(404) 441-7159</a></div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast fixed right-4 top-4 z-[70] px-4 py-3 rounded-xl hidden" role="status" aria-live="polite"></div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Init EmailJS
+    (function(){ emailjs.init('p4pF3OWvh-DXtae4c'); })();
+
+    const form = document.getElementById('contactForm');
+    const statusEl = document.getElementById('formStatus');
+    const toastEl = document.getElementById('toast');
+
+    function showToast(message, isError = false) {
+      toastEl.textContent = message;
+      toastEl.classList.remove('hidden');
+      toastEl.classList.toggle('text-red-300', isError);
+      toastEl.classList.toggle('border-red-500/30', isError);
+      setTimeout(() => { toastEl.classList.add('hidden'); }, 4200);
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.textContent = 'Sending...';
+      const data = Object.fromEntries(new FormData(form).entries());
+      try {
+        await emailjs.send('service_i0b58fn', 'template_lo49jrf', {
+          name: data.name,
+          phone: data.phone || '',
+          email: data.email,
+          service: data.service,
+          date: data.date || '',
+          message: data.message || '',
+          booking_url: 'https://calendly.com/cutitoutlee/30min'
+        });
+        statusEl.textContent = 'Thanks! Your message has been sent.';
+        showToast('Message sent. I will reply shortly.');
+        form.reset();
+      } catch (err) {
+        console.error(err);
+        statusEl.textContent = 'Sorry, something went wrong. Please try again or call (404) 441-7159.';
+        showToast('Send failed. Try again or call (404) 441-7159.', true);
+      }
+    });
+  </script>
+</body>
+</html>
