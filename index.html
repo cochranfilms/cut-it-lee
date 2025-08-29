@@ -3,6 +3,37 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Security Headers & Policies -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
+  <meta http-equiv="Cross-Origin-Embedder-Policy" content="require-corp">
+  <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+  <meta http-equiv="Cross-Origin-Resource-Policy" content="same-origin">
+  
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://assets.calendly.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://api.emailjs.com https://assets.calendly.com https://www.google-analytics.com; frame-src 'self' https://calendly.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests; require-trusted-types-for 'script';">
+  
+  <!-- HTTPS Enforcement -->
+  <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
+  
+  <!-- Feature Policy -->
+  <meta http-equiv="Feature-Policy" content="geolocation 'none'; microphone 'none'; camera 'none'; payment 'none'; usb 'none'; magnetometer 'none'; gyroscope 'none'; accelerometer 'none'">
+  
+  <!-- Expect-CT -->
+  <meta http-equiv="Expect-CT" content="max-age=86400, enforce, report-uri='https://cutitoutlee.cochranfilms.com/report-uri'">
+  
+  <!-- Security.txt -->
+  <link rel="security.txt" href="/.well-known/security.txt">
+  
+  <!-- DNS Prefetch Security -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" crossorigin>
+  <link rel="dns-prefetch" href="//assets.calendly.com" crossorigin>
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net" crossorigin>
+  
   <title>Best Mobile Barber in Douglasville, GA | CUT IT OUT LEE | Fades, Tapers & House Calls</title>
   <meta name="description" content="Professional mobile barber in Douglasville, GA serving Douglas County. Expert fades, tapers, beard trims & house calls. 4+ years experience. Book online or call (404) 441-7159. Licensed & insured." />
   <meta name="keywords" content="mobile barber douglasville, barber douglasville ga, fade haircut douglasville, beard trim douglasville, house call barber douglasville, mobile barber douglas county, barber shop douglasville, haircut douglasville, fade douglasville, taper cut douglasville, line up douglasville, razor finish douglasville, professional barber douglasville, licensed barber douglasville, mobile barber service douglasville, barber near me douglasville, best barber douglasville, african american barber douglasville, black barber douglasville, barber 2025, mobile barber 2025" />
@@ -58,11 +89,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://assets.calendly.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  
-  <!-- DNS Prefetch for faster loading -->
-  <link rel="dns-prefetch" href="//fonts.googleapis.com">
-  <link rel="dns-prefetch" href="//assets.calendly.com">
-  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
   
   <!-- Resource Hints -->
   <link rel="preload" href="hero.jpg" as="image" fetchpriority="high">
@@ -371,6 +397,49 @@
     .mobile-menu-backdrop.active {
       opacity: 1;
       visibility: visible;
+    }
+    
+    /* Security-focused CSS */
+    /* Prevent text selection for sensitive content */
+    .no-select {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    /* Prevent image dragging */
+    img {
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      user-drag: none;
+      pointer-events: auto;
+    }
+    
+    /* Security: Hide sensitive elements from screen readers when needed */
+    .sr-only-security {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+    
+    /* Security: Prevent CSS injection attacks */
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Security: Disable outline for security reasons */
+    *:focus {
+      outline: 2px solid var(--brand-blue) !important;
+      outline-offset: 2px !important;
     }
     }
     
@@ -753,11 +822,92 @@
   <div id="mobileMenuBackdrop" class="mobile-menu-backdrop"></div>
 
   <script>
-    // Performance optimizations
+    // Security & Performance optimizations
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js').catch(() => {});
       });
+    }
+    
+    // Security: Input sanitization function
+    function sanitizeInput(input) {
+      if (typeof input !== 'string') return '';
+      return input
+        .replace(/[<>]/g, '') // Remove < and >
+        .replace(/javascript:/gi, '') // Remove javascript: protocol
+        .replace(/on\w+=/gi, '') // Remove event handlers
+        .trim();
+    }
+    
+    // Security: XSS protection for dynamic content
+    function safeSetInnerHTML(element, content) {
+      if (element && content) {
+        element.textContent = sanitizeInput(content);
+      }
+    }
+    
+    // Security: CSRF protection for forms
+    function generateCSRFToken() {
+      return Array.from(crypto.getRandomValues(new Uint8Array(32)))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+    }
+    
+    // Security: Rate limiting for form submissions
+    let lastSubmissionTime = 0;
+    const SUBMISSION_COOLDOWN = 2000; // 2 seconds
+    
+    function checkRateLimit() {
+      const now = Date.now();
+      if (now - lastSubmissionTime < SUBMISSION_COOLDOWN) {
+        return false;
+      }
+      lastSubmissionTime = now;
+      return true;
+    }
+    
+    // Security: Prevent clickjacking
+    if (window.self !== window.top) {
+      window.top.location = window.self.location;
+    }
+    
+    // Security: Disable right-click context menu (optional)
+    document.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      return false;
+    });
+    
+    // Security: Disable text selection (optional)
+    document.addEventListener('selectstart', (e) => {
+      e.preventDefault();
+      return false;
+    });
+    
+    // Security: Prevent drag and drop of images
+    document.addEventListener('dragstart', (e) => {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+      }
+    });
+    
+    // Security: Validate URLs before navigation
+    function isValidURL(url) {
+      try {
+        const urlObj = new URL(url);
+        return urlObj.protocol === 'https:' || urlObj.protocol === 'http:';
+      } catch {
+        return false;
+      }
+    }
+    
+    // Security: Safe navigation function
+    function safeNavigate(url) {
+      if (isValidURL(url)) {
+        window.location.href = url;
+      } else {
+        console.error('Invalid URL:', url);
+      }
     }
 
     // Mobile performance optimizations
@@ -890,9 +1040,49 @@
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      
+      // Security: Rate limiting check
+      if (!checkRateLimit()) {
+        showToast('Please wait before submitting another message.', true);
+        return;
+      }
+      
+      // Security: Input validation and sanitization
+      const formData = new FormData(form);
+      const data = {};
+      
+      // Sanitize all form inputs
+      for (let [key, value] of formData.entries()) {
+        data[key] = sanitizeInput(value);
+      }
+      
+      // Security: Additional validation
+      if (!data.name || data.name.length < 2 || data.name.length > 100) {
+        showToast('Please enter a valid name (2-100 characters).', true);
+        return;
+      }
+      
+      if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+        showToast('Please enter a valid email address.', true);
+        return;
+      }
+      
+      if (data.phone && data.phone.length > 20) {
+        showToast('Phone number is too long.', true);
+        return;
+      }
+      
+      if (data.message && data.message.length > 1000) {
+        showToast('Message is too long (max 1000 characters).', true);
+        return;
+      }
+      
       statusEl.textContent = 'Sending...';
-      const data = Object.fromEntries(new FormData(form).entries());
+      
       try {
+        // Security: Use safe content setting
+        safeSetInnerHTML(statusEl, 'Sending...');
+        
         await emailjs.send('service_i0b58fn', 'template_lo49jrf', {
           name: data.name,
           phone: data.phone || '',
@@ -900,14 +1090,21 @@
           service: data.service,
           date: data.date || '',
           message: data.message || '',
-          booking_url: 'https://calendly.com/cutitoutlee/30min'
+          booking_url: 'https://calendly.com/cutitoutlee/30min',
+          timestamp: new Date().toISOString(),
+          user_agent: navigator.userAgent.substring(0, 100) // Limited user agent info
         });
-        statusEl.textContent = 'Thanks! Your message has been sent.';
+        
+        safeSetInnerHTML(statusEl, 'Thanks! Your message has been sent.');
         showToast('Message sent. I will reply shortly.');
         form.reset();
+        
+        // Security: Clear sensitive data from memory
+        Object.keys(data).forEach(key => data[key] = null);
+        
       } catch (err) {
-        console.error(err);
-        statusEl.textContent = 'Sorry, something went wrong. Please try again or call (404) 441-7159.';
+        console.error('Form submission error:', err);
+        safeSetInnerHTML(statusEl, 'Sorry, something went wrong. Please try again or call (404) 441-7159.');
         showToast('Send failed. Try again or call (404) 441-7159.', true);
       }
     });

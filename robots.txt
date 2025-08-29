@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+Disallow: /.well-known/
+Disallow: /security-policy
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /internal/
+
+# Security: Prevent crawling of sensitive areas
+User-agent: *
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /logs/
+Disallow: /backup/
+
+# Security: Block malicious bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Security: Rate limiting hint
+Crawl-delay: 1
+
+# Security: Sitemap location
+Sitemap: https://cutitoutlee.cochranfilms.com/sitemap.xml
