@@ -367,6 +367,357 @@
     #services {
       position: relative;
     }
+    #gallery {
+      position: relative;
+      overflow: hidden;
+      background-color: #0A0C0A;
+    }
+    .gallery-panel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: min(calc(100vw * 980 / 1742), 980px);
+      pointer-events: none;
+    }
+    .gallery-panel-bg {
+      position: absolute;
+      inset: 0;
+      background-color: #0A0C0A;
+      background-image: url('barber-bg4.png');
+      background-size: min(100%, 1742px) auto;
+      background-position: top center;
+      background-repeat: no-repeat;
+    }
+    .gallery-panel-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.72);
+    }
+    .gallery-header {
+      display: grid;
+      gap: 1rem;
+    }
+    @media (min-width: 1024px) {
+      .gallery-header {
+        grid-template-columns: 1fr auto;
+        align-items: end;
+        gap: 1.5rem;
+      }
+    }
+    .gallery-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--slime);
+    }
+    .gallery-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: flex-start;
+    }
+    @media (min-width: 1024px) {
+      .gallery-chips {
+        justify-content: flex-end;
+        max-width: 18rem;
+      }
+    }
+    .gallery-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.45rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: rgba(22, 26, 22, 0.88);
+      border: 1px solid var(--border-strong);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .gallery-showcase {
+      margin-top: 1rem;
+    }
+    @media (min-width: 1024px) {
+      .gallery-showcase {
+        margin-top: 0.5rem;
+        flex: 1;
+        min-height: 0;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    .gallery-slideshow {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      min-height: 0;
+      width: 100%;
+    }
+    @media (min-width: 1024px) {
+      .gallery-slideshow {
+        flex: 1;
+        justify-content: center;
+        gap: 0.65rem;
+      }
+    }
+    .gallery-slideshow__frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.25rem;
+      border: 1px solid rgba(126, 203, 0, 0.22);
+      background: #0A0C0A;
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(126, 203, 0, 0.12);
+      width: 100%;
+      aspect-ratio: 4 / 5;
+    }
+    @media (min-width: 768px) {
+      .gallery-slideshow__frame {
+        aspect-ratio: 5 / 4;
+      }
+    }
+    @media (min-width: 1024px) {
+      .gallery-slideshow__frame {
+        width: 100%;
+        aspect-ratio: auto;
+        height: clamp(260px, 34vh, 360px);
+      }
+    }
+    .gallery-slideshow__slides {
+      position: absolute;
+      inset: 0;
+    }
+    .gallery-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.65s ease, visibility 0.65s ease;
+    }
+    .gallery-slide.is-active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 1;
+    }
+    .gallery-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: var(--slide-focus, center 30%);
+      transform: scale(1);
+      transition: transform 6s ease-out;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .gallery-slide img { transition: none; transform: scale(1) !important; }
+    }
+    .gallery-slide.is-active img {
+      transform: scale(1.04);
+    }
+    .gallery-slide__shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10, 12, 10, 0) 55%, rgba(10, 12, 10, 0.35) 100%);
+      pointer-events: none;
+    }
+    .gallery-slideshow__meta {
+      display: grid;
+      gap: 0.75rem;
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border-radius: 1rem;
+      background: rgba(22, 26, 22, 0.88);
+      border: 1px solid var(--border-strong);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    @media (min-width: 640px) {
+      .gallery-slideshow__meta {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.9rem 1.15rem;
+      }
+    }
+    .gallery-slideshow__info {
+      min-width: 0;
+    }
+    .gallery-slide__tag {
+      display: inline-flex;
+      padding: 0.32rem 0.7rem;
+      border-radius: 9999px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #0A0C0A;
+      background: var(--slime);
+    }
+    .gallery-slide__title {
+      margin-top: 0.45rem;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+    }
+    .gallery-slide__desc {
+      margin-top: 0.25rem;
+      font-size: 0.8125rem;
+      line-height: 1.45;
+      color: var(--text-muted);
+    }
+    .gallery-slideshow__arrow {
+      position: absolute;
+      top: 50%;
+      z-index: 3;
+      transform: translateY(-50%);
+      width: 2.75rem;
+      height: 2.75rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      border: 1px solid rgba(126, 203, 0, 0.35);
+      background: rgba(10, 12, 10, 0.72);
+      color: #fff;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+    .gallery-slideshow__arrow:hover {
+      background: rgba(126, 203, 0, 0.18);
+      border-color: rgba(126, 203, 0, 0.65);
+    }
+    .gallery-slideshow__arrow:active { transform: translateY(-50%) scale(0.96); }
+    .gallery-slideshow__arrow--prev { left: 0.85rem; }
+    .gallery-slideshow__arrow--next { right: 0.85rem; }
+    .gallery-slideshow__progress {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+    .gallery-slideshow__progress span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #7ECB00, #A8F020);
+      transition: width 0.15s linear;
+    }
+    .gallery-slideshow__toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .gallery-slideshow__counter {
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(238, 242, 232, 0.55);
+    }
+    .gallery-slideshow__counter strong {
+      color: var(--slime);
+      font-weight: 800;
+    }
+    .gallery-slideshow__book {
+      margin-left: auto;
+    }
+    .gallery-slideshow__thumbs {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 0.55rem;
+      width: 100%;
+    }
+    .gallery-thumb {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1;
+      border-radius: 0.85rem;
+      border: 2px solid transparent;
+      opacity: 0.72;
+      transition: opacity 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .gallery-thumb:hover {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+    .gallery-thumb.is-active {
+      opacity: 1;
+      border-color: var(--slime);
+      box-shadow: 0 0 0 1px rgba(126, 203, 0, 0.25), 0 8px 20px rgba(126, 203, 0, 0.18);
+    }
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: var(--slide-focus, center 30%);
+    }
+    .gallery-thumb__label {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 0.35rem 0.25rem;
+      font-size: 0.55rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.82));
+    }
+    @media (max-width: 639px) {
+      .gallery-slideshow__thumbs {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.15rem;
+      }
+      .gallery-slideshow__thumbs::-webkit-scrollbar { display: none; }
+      .gallery-slideshow__thumbs { scrollbar-width: none; }
+      .gallery-thumb {
+        flex: 0 0 4.5rem;
+        scroll-snap-align: start;
+      }
+      .gallery-slide__desc { display: none; }
+      .gallery-slideshow__toolbar {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .gallery-slideshow__book {
+        flex: 1;
+        justify-content: center;
+      }
+    }
+    @media (min-width: 1024px) {
+      #gallery {
+        height: min(calc(100vw * 980 / 1742), 980px);
+      }
+      .gallery-inner {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-top: 1.75rem;
+        padding-bottom: 1.75rem;
+      }
+      .gallery-header { margin-bottom: 0.75rem; }
+      .gallery-header p.text-lg { display: none; }
+      .gallery-slideshow__book .btn-primary {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.9rem;
+      }
+    }
     .services-intro-card {
       background: linear-gradient(155deg, #8EDC1A 0%, #7ECB00 45%, #5A9A00 100%);
       color: #fff;
@@ -689,7 +1040,7 @@
       .mobile-nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
       
       /* Mobile gallery optimizations */
-      .mobile-gallery img { aspect-ratio: 1; object-fit: cover; }
+      .gallery-slideshow__arrow { width: 2.35rem; height: 2.35rem; }
       
       /* Mobile form optimizations */
       .mobile-form input, .mobile-form select, .mobile-form textarea { 
@@ -837,7 +1188,7 @@
     <div class="max-w-7xl mx-auto px-4 pt-3 md:pt-4">
       <div class="w-full flex justify-center">
         <a href="#main" class="block" aria-label="Go to top">
-          <img src="logo_big.png" onerror="this.src='logo.PNG'" alt="Kuts By Lee logo" class="h-16 w-16 md:h-24 md:w-24 lg:h-28 lg:w-28 rounded-full ring-4 md:ring-6 ring-slime ring-offset-2 ring-offset-cream ring-3d drop-shadow-[0_10px_28px_rgba(126,203,0,0.2)] mobile-optimize" />
+          <img src="logo_big.png" onerror="this.src='logo.PNG'" alt="Kuts By Lee logo" class="h-16 w-16 md:h-24 md:w-24 lg:h-28 lg:w-28 object-contain mobile-optimize" />
         </a>
       </div>
       <nav class="hidden md:flex justify-center mt-3 md:mt-4">
@@ -868,7 +1219,7 @@
           <!-- Mobile Menu Header -->
           <div class="flex items-center justify-between p-4 border-b border-slime/15">
             <div class="flex items-center gap-3">
-              <img src="logo.PNG" alt="Kuts By Lee logo" class="h-10 w-10 rounded-full ring-2 ring-slime ring-3d mobile-optimize" />
+              <img src="logo.PNG" alt="Kuts By Lee logo" class="h-10 w-10 object-contain mobile-optimize" />
               <span class="text-lg font-semibold">Kuts By Lee</span>
             </div>
             <button id="closeMenuBtn" class="mobile-btn touch-target p-2 rounded-lg hover:bg-slime/10 transition-colors" aria-label="Close mobile menu">
@@ -917,17 +1268,14 @@
   <section class="relative" id="main">
     <img src="barber-bg3.png" alt="Classic barber pole outside a barbershop" class="w-full h-[72vh] md:h-[72vh] h-[60vh] object-cover object-center" loading="eager" decoding="async" fetchpriority="high">
     <div class="absolute inset-0 flex items-center">
-      <div class="max-w-7xl mx-auto px-4">
-        <div class="max-w-2xl">
-          <div class="flex items-center gap-3 mb-4">
-            <img src="logo.PNG" class="h-14 w-14 rounded-full ring-4 ring-slime ring-offset-2 ring-offset-transparent ring-3d mobile-optimize" alt="Kuts By Lee logo">
-            <p class="uppercase tracking-widest text-sm font-bold text-white/90">Douglasville • In-Shop & House Calls</p>
-          </div>
+      <div class="max-w-7xl mx-auto px-4 w-full">
+        <div class="max-w-2xl mx-auto text-center">
+          <p class="uppercase tracking-widest text-sm font-bold text-white/90 mb-4">Douglasville • In-Shop & House Calls</p>
           <h1 class="text-5xl md:text-6xl font-extrabold leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]">
             Sharp Kuts. <span class="text-slime">House Calls.</span> On Your Time.
           </h1>
           <p class="mt-4 text-lg text-white/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.4)]">I'm Lee — professional barber with 4+ years behind the chair. In-shop Tue–Sat or I bring the shop to you on Mon & Tue.</p>
-          <div class="mt-6 flex flex-wrap gap-3">
+          <div class="mt-6 flex flex-wrap gap-3 justify-center">
             <a href="#book" class="btn-primary shadow-btn px-6 py-3 rounded-xl font-semibold mobile-btn touch-target">Book a Kut</a>
             <a href="tel:+14044417159" class="px-6 py-3 rounded-xl border border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 mobile-btn touch-target text-white">Call (404) 441-7159</a>
           </div>
@@ -1080,83 +1428,106 @@
   </section>
 
   <!-- Gallery -->
-  <section id="gallery" class="max-w-7xl mx-auto px-4 py-16">
-    <div class="text-center mb-12">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">Fresh Work</h2>
-      <p class="text-lg text-ink/70 max-w-2xl mx-auto">Precision kuts, clean lines, and styles that speak for themselves. Every client gets the same attention to detail.</p>
+  <section id="gallery" class="relative py-10 lg:py-0 overflow-hidden">
+    <div class="gallery-panel absolute top-0 left-0 right-0" aria-hidden="true">
+      <div class="gallery-panel-bg"></div>
     </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mobile-gallery">
-      <!-- Gallery Item 1 -->
-      <div class="group relative overflow-hidden rounded-2xl bg-surface border border-slime/15 hover:border-slime/40 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(126,203,0,0.15)] performance-optimize">
-        <img src="g1.jpg" alt="Signature fade haircut with crisp lines" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105 lazy-load" loading="lazy" decoding="async" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-          <h3 class="text-lg font-semibold text-white mb-1">Signature Fade</h3>
-          <p class="text-sm text-white/80">Crisp lines, smooth transitions</p>
+    <div class="gallery-inner relative z-10 max-w-7xl mx-auto px-4 md:px-8">
+      <div class="gallery-header mb-6 lg:mb-0">
+        <div>
+          <p class="gallery-eyebrow">Portfolio</p>
+          <h2 class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">Fresh Work</h2>
+          <p class="mt-4 text-lg text-ink/70 max-w-xl leading-relaxed">Precision kuts, clean lines, and styles that speak for themselves — every client gets the same attention to detail.</p>
+        </div>
+        <div class="gallery-chips" aria-label="Specialties shown in gallery">
+          <span class="gallery-chip">Fades</span>
+          <span class="gallery-chip">Line-Ups</span>
+          <span class="gallery-chip">Beard Work</span>
+          <span class="gallery-chip">Tapers</span>
         </div>
       </div>
 
-      <!-- Gallery Item 2 -->
-      <div class="group relative overflow-hidden rounded-2xl bg-surface border border-slime/15 hover:border-slime/40 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(126,203,0,0.15)]">
-        <img src="g2.jpg" alt="Beard trim and line-up precision work" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-          <h3 class="text-lg font-semibold text-white mb-1">Beard Trim</h3>
-          <p class="text-sm text-white/80">Precision shaping & line-up</p>
+      <div class="gallery-showcase">
+        <div class="gallery-slideshow" id="gallerySlideshow" aria-roledescription="carousel" aria-label="Fresh work gallery" tabindex="0">
+          <div class="gallery-slideshow__frame">
+            <div class="gallery-slideshow__slides">
+              <figure class="gallery-slide is-active" data-slide="0" data-tag="Fade" data-title="Signature Fade" data-desc="Crisp lines and smooth transitions — the kind of fade that turns heads." aria-hidden="false">
+                <img src="g1.jpg" alt="Signature fade haircut with crisp lines on a young client" loading="eager" decoding="async" style="--slide-focus: center 38%">
+                <div class="gallery-slide__shade" aria-hidden="true"></div>
+              </figure>
+              <figure class="gallery-slide" data-slide="1" data-tag="Beard" data-title="Beard Trim" data-desc="Precision shaping and a sharp line-up." aria-hidden="true">
+                <img src="g2.jpg" alt="Beard trim and line-up precision work" loading="lazy" decoding="async" style="--slide-focus: 58% 32%">
+                <div class="gallery-slide__shade" aria-hidden="true"></div>
+              </figure>
+              <figure class="gallery-slide" data-slide="2" data-tag="Taper" data-title="Taper Cut" data-desc="Clean fade, sharp finish." aria-hidden="true">
+                <img src="g3.jpg" alt="Taper cut with clean finish" loading="lazy" decoding="async" style="--slide-focus: center 28%">
+                <div class="gallery-slide__shade" aria-hidden="true"></div>
+              </figure>
+              <figure class="gallery-slide" data-slide="3" data-tag="Line-Up" data-title="Line-Up" data-desc="Sharp edges, clean lines." aria-hidden="true">
+                <img src="g4.jpg" alt="Line-up and edge work precision" loading="lazy" decoding="async" style="--slide-focus: 52% 32%">
+                <div class="gallery-slide__shade" aria-hidden="true"></div>
+              </figure>
+              <figure class="gallery-slide" data-slide="4" data-tag="Razor" data-title="Razor Finish" data-desc="Detail work and precision." aria-hidden="true">
+                <img src="g5.jpg" alt="Razor finish and detail work" loading="lazy" decoding="async" style="--slide-focus: 54% 32%">
+                <div class="gallery-slide__shade" aria-hidden="true"></div>
+              </figure>
+              <figure class="gallery-slide" data-slide="5" data-tag="Classic" data-title="Classic Cut" data-desc="Timeless style, modern execution." aria-hidden="true">
+                <img src="g6.jpg" alt="Classic cut and style" loading="lazy" decoding="async" style="--slide-focus: center 30%">
+                <div class="gallery-slide__shade" aria-hidden="true"></div>
+              </figure>
+            </div>
+            <button type="button" class="gallery-slideshow__arrow gallery-slideshow__arrow--prev mobile-btn touch-target" aria-label="Previous slide">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <button type="button" class="gallery-slideshow__arrow gallery-slideshow__arrow--next mobile-btn touch-target" aria-label="Next slide">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+            <div class="gallery-slideshow__progress" aria-hidden="true"><span id="galleryProgress"></span></div>
+          </div>
+
+          <div class="gallery-slideshow__meta">
+            <div class="gallery-slideshow__info">
+              <span class="gallery-slide__tag" id="galleryActiveTag">Fade</span>
+              <h3 class="gallery-slide__title" id="galleryActiveTitle">Signature Fade</h3>
+              <p class="gallery-slide__desc" id="galleryActiveDesc">Crisp lines and smooth transitions — the kind of fade that turns heads.</p>
+            </div>
+            <div class="gallery-slideshow__toolbar">
+              <p class="gallery-slideshow__counter"><strong id="galleryCurrent">01</strong> / 06</p>
+              <a href="#book" class="gallery-slideshow__book btn-primary shadow-btn px-5 py-2.5 rounded-xl text-sm font-semibold inline-flex items-center gap-2 mobile-btn touch-target">
+                Book Your Kut
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="gallery-slideshow__thumbs" role="tablist" aria-label="Choose a slide">
+            <button type="button" class="gallery-thumb is-active" role="tab" aria-selected="true" aria-label="Signature Fade" data-slide-to="0">
+              <img src="g1.jpg" alt="" style="--slide-focus: center 38%">
+              <span class="gallery-thumb__label">Fade</span>
+            </button>
+            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Beard Trim" data-slide-to="1">
+              <img src="g2.jpg" alt="" style="--slide-focus: 58% 32%">
+              <span class="gallery-thumb__label">Beard</span>
+            </button>
+            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Taper Cut" data-slide-to="2">
+              <img src="g3.jpg" alt="" style="--slide-focus: center 28%">
+              <span class="gallery-thumb__label">Taper</span>
+            </button>
+            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Line-Up" data-slide-to="3">
+              <img src="g4.jpg" alt="" style="--slide-focus: 52% 32%">
+              <span class="gallery-thumb__label">Line-Up</span>
+            </button>
+            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Razor Finish" data-slide-to="4">
+              <img src="g5.jpg" alt="" style="--slide-focus: 54% 32%">
+              <span class="gallery-thumb__label">Razor</span>
+            </button>
+            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Classic Cut" data-slide-to="5">
+              <img src="g6.jpg" alt="" style="--slide-focus: center 30%">
+              <span class="gallery-thumb__label">Classic</span>
+            </button>
+          </div>
         </div>
       </div>
-
-      <!-- Gallery Item 3 -->
-      <div class="group relative overflow-hidden rounded-2xl bg-surface border border-slime/15 hover:border-slime/40 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(126,203,0,0.15)]">
-        <img src="g3.jpg" alt="Taper cut with clean finish" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-          <h3 class="text-lg font-semibold text-white mb-1">Taper Cut</h3>
-          <p class="text-sm text-white/80">Clean fade, sharp finish</p>
-        </div>
-      </div>
-
-      <!-- Gallery Item 4 -->
-      <div class="group relative overflow-hidden rounded-2xl bg-surface border border-slime/15 hover:border-slime/40 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(126,203,0,0.15)]">
-        <img src="g4.jpg" alt="Line-up and edge work precision" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-          <h3 class="text-lg font-semibold text-white mb-1">Line-Up</h3>
-          <p class="text-sm text-white/80">Sharp edges, clean lines</p>
-        </div>
-      </div>
-
-      <!-- Gallery Item 5 -->
-      <div class="group relative overflow-hidden rounded-2xl bg-surface border border-slime/15 hover:border-slime/40 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(126,203,0,0.15)]">
-        <img src="g5.jpg" alt="Razor finish and detail work" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-          <h3 class="text-lg font-semibold text-white mb-1">Razor Finish</h3>
-          <p class="text-sm text-white/80">Detail work & precision</p>
-        </div>
-      </div>
-
-      <!-- Gallery Item 6 -->
-      <div class="group relative overflow-hidden rounded-2xl bg-surface border border-slime/15 hover:border-slime/40 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(126,203,0,0.15)]">
-        <img src="g6.jpg" alt="Classic cut and style" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" decoding="async">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-          <h3 class="text-lg font-semibold text-white mb-1">Classic Cut</h3>
-          <p class="text-sm text-white/80">Timeless style, modern execution</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Gallery CTA -->
-    <div class="text-center mt-12">
-      <p class="text-lg text-ink/70 mb-6">Ready to get your own fresh kut?</p>
-      <a href="#book" class="btn-primary shadow-btn px-8 py-4 rounded-xl text-lg font-semibold inline-flex items-center gap-2 mobile-btn touch-target">
-        Book Your Kut
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-        </svg>
-      </a>
     </div>
   </section>
 
@@ -1352,7 +1723,7 @@
   <footer class="bg-cream border-t border-slime/20">
     <div class="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-3">
-        <img src="logo.PNG" class="h-8 w-8 rounded-full ring-2 ring-slime ring-3d" alt="Kuts By Lee logo">
+        <img src="logo_big.png" onerror="this.src='logo.PNG'" class="h-10 w-auto max-w-[120px] object-contain shrink-0" alt="Kuts By Lee logo" width="120" height="40" loading="lazy" decoding="async">
         <span class="text-sm">© <span id="y"></span> Kuts By Lee • Douglasville, GA</span>
       </div>
       <div class="text-sm text-ink/70">Email: <a class="underline text-slime" href="mailto:cutitoutlee@gmail.com">cutitoutlee@gmail.com</a> • Phone: <a class="underline text-slime" href="tel:+14044417159">(404) 441-7159</a></div>
@@ -1619,6 +1990,129 @@
           serviceItemObserver.observe(item);
         });
       }
+    }
+
+    const gallerySlideshow = document.getElementById('gallerySlideshow');
+    if (gallerySlideshow) {
+      const slides = Array.from(gallerySlideshow.querySelectorAll('.gallery-slide'));
+      const thumbs = Array.from(gallerySlideshow.querySelectorAll('.gallery-thumb'));
+      const prevBtn = gallerySlideshow.querySelector('.gallery-slideshow__arrow--prev');
+      const nextBtn = gallerySlideshow.querySelector('.gallery-slideshow__arrow--next');
+      const currentEl = document.getElementById('galleryCurrent');
+      const progressEl = document.getElementById('galleryProgress');
+      const tagEl = document.getElementById('galleryActiveTag');
+      const titleEl = document.getElementById('galleryActiveTitle');
+      const descEl = document.getElementById('galleryActiveDesc');
+      const slideCount = slides.length;
+      let activeIndex = 0;
+      let autoplayTimer = null;
+      let progressTimer = null;
+      let touchStartX = 0;
+      const autoplayMs = 5500;
+
+      function padSlideNumber(index) {
+        return String(index + 1).padStart(2, '0');
+      }
+
+      function resetSlideMotion(slide) {
+        const img = slide.querySelector('img');
+        if (!img) return;
+        img.style.transition = 'none';
+        img.style.transform = 'scale(1)';
+        void img.offsetWidth;
+        img.style.transition = '';
+      }
+
+      function goToSlide(index) {
+        activeIndex = (index + slideCount) % slideCount;
+
+        slides.forEach((slide, i) => {
+          const isActive = i === activeIndex;
+          slide.classList.toggle('is-active', isActive);
+          slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+          if (isActive) resetSlideMotion(slide);
+        });
+
+        thumbs.forEach((thumb, i) => {
+          const isActive = i === activeIndex;
+          thumb.classList.toggle('is-active', isActive);
+          thumb.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        if (currentEl) currentEl.textContent = padSlideNumber(activeIndex);
+
+        const activeSlide = slides[activeIndex];
+        if (activeSlide) {
+          if (tagEl) tagEl.textContent = activeSlide.dataset.tag || '';
+          if (titleEl) titleEl.textContent = activeSlide.dataset.title || '';
+          if (descEl) descEl.textContent = activeSlide.dataset.desc || '';
+        }
+
+        restartAutoplay();
+      }
+
+      function stopAutoplay() {
+        if (autoplayTimer) window.clearTimeout(autoplayTimer);
+        if (progressTimer) window.clearInterval(progressTimer);
+        autoplayTimer = null;
+        progressTimer = null;
+        if (progressEl) progressEl.style.width = '0%';
+      }
+
+      function restartAutoplay() {
+        stopAutoplay();
+        if (prefersReducedMotion || slideCount < 2) return;
+
+        let elapsed = 0;
+        if (progressEl) progressEl.style.width = '0%';
+
+        progressTimer = window.setInterval(() => {
+          elapsed += 50;
+          if (progressEl) progressEl.style.width = `${Math.min((elapsed / autoplayMs) * 100, 100)}%`;
+        }, 50);
+
+        autoplayTimer = window.setTimeout(() => goToSlide(activeIndex + 1), autoplayMs);
+      }
+
+      prevBtn?.addEventListener('click', () => goToSlide(activeIndex - 1));
+      nextBtn?.addEventListener('click', () => goToSlide(activeIndex + 1));
+
+      thumbs.forEach(thumb => {
+        thumb.addEventListener('click', () => {
+          const target = Number(thumb.dataset.slideTo);
+          if (!Number.isNaN(target)) goToSlide(target);
+        });
+      });
+
+      gallerySlideshow.addEventListener('mouseenter', stopAutoplay);
+      gallerySlideshow.addEventListener('mouseleave', restartAutoplay);
+      gallerySlideshow.addEventListener('focusin', stopAutoplay);
+      gallerySlideshow.addEventListener('focusout', (event) => {
+        if (!gallerySlideshow.contains(event.relatedTarget)) restartAutoplay();
+      });
+
+      gallerySlideshow.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          goToSlide(activeIndex - 1);
+        } else if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          goToSlide(activeIndex + 1);
+        }
+      });
+
+      gallerySlideshow.addEventListener('touchstart', (event) => {
+        touchStartX = event.changedTouches[0]?.clientX ?? 0;
+      }, { passive: true });
+
+      gallerySlideshow.addEventListener('touchend', (event) => {
+        const touchEndX = event.changedTouches[0]?.clientX ?? 0;
+        const delta = touchEndX - touchStartX;
+        if (Math.abs(delta) < 40) return;
+        goToSlide(delta > 0 ? activeIndex - 1 : activeIndex + 1);
+      }, { passive: true });
+
+      goToSlide(0);
     }
 
     form.addEventListener('submit', async (e) => {
