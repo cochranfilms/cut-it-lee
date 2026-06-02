@@ -970,6 +970,122 @@
       color-scheme: light;
       border-radius: 0.75rem;
     }
+    .testimonials-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--slime);
+    }
+    .testimonials-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.75rem;
+      }
+    }
+    .testimonial-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    }
+    .testimonial-card:hover {
+      border-color: rgba(126, 203, 0, 0.45);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(126, 203, 0, 0.1);
+      transform: translateY(-3px);
+    }
+    .testimonial-card__media {
+      position: relative;
+      aspect-ratio: 5 / 4;
+      overflow: hidden;
+      background: #0A0C0A;
+    }
+    .testimonial-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 22%;
+      transition: transform 0.5s ease;
+    }
+    .testimonial-card:hover .testimonial-card__media img {
+      transform: scale(1.04);
+    }
+    .testimonial-card__media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(10, 12, 10, 0.55) 100%);
+      pointer-events: none;
+    }
+    .testimonial-card__body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 1.35rem 1.5rem 1.5rem;
+    }
+    .testimonial-card__stars {
+      display: flex;
+      gap: 0.15rem;
+      margin-bottom: 0.85rem;
+      color: var(--slime);
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+    }
+    .testimonial-card__quote {
+      flex: 1;
+      margin: 0;
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+    .testimonial-card__quote::before {
+      content: '\201C';
+      color: var(--slime);
+      font-size: 1.35rem;
+      font-weight: 800;
+      line-height: 0;
+      margin-right: 0.15rem;
+    }
+    .testimonial-card__footer {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid var(--border);
+    }
+    .testimonial-card__avatar {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 9999px;
+      object-fit: cover;
+      border: 2px solid var(--slime);
+      flex-shrink: 0;
+    }
+    .testimonial-card__name {
+      font-size: 0.9375rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+    }
+    .testimonial-card__role {
+      display: block;
+      margin-top: 0.15rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+    }
     .contact-book-link {
       display: inline-flex;
       align-items: center;
@@ -1645,13 +1761,69 @@
   </section>
 
   <!-- Reviews -->
-  <section class="bg-mist">
-    <div class="max-w-7xl mx-auto px-4 py-16">
-      <h2 class="text-3xl font-bold">What Clients Say</h2>
-      <div class="grid md:grid-cols-3 gap-6 mt-8">
-        <blockquote class="p-6 rounded-2xl bg-surface border border-slime/15 shadow-sm text-ink/80">"Clean fade, on time, and professional. Lee's my go-to."</blockquote>
-        <blockquote class="p-6 rounded-2xl bg-surface border border-slime/15 shadow-sm text-ink/80">"House call was clutch before a big event. Highly recommend."</blockquote>
-        <blockquote class="p-6 rounded-2xl bg-surface border border-slime/15 shadow-sm text-ink/80">"Attention to detail is top tier. Beard line-up was perfect."</blockquote>
+  <section id="reviews" class="bg-mist">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 py-16 lg:py-20">
+      <p class="testimonials-eyebrow">Reviews</p>
+      <h2 class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">What Clients Say</h2>
+      <p class="mt-3 text-ink/70 max-w-2xl">Real kuts, real clients — hear from people who trust Lee behind the chair.</p>
+
+      <div class="testimonials-grid mt-10">
+        <article class="testimonial-card">
+          <div class="testimonial-card__media">
+            <img src="IMG_3964.jpeg" alt="Cody after a fresh kut from Kuts By Lee" loading="lazy" decoding="async" width="600" height="480">
+          </div>
+          <div class="testimonial-card__body">
+            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="testimonial-card__quote">
+              Kuts By Lee has always had my back when it comes to a fresh cut. Anytime I reach out, he responds right away and I usually get a cut the same day. I highly recommend Lee for your next haircut. His house calls are super affordable and convenient!
+            </blockquote>
+            <footer class="testimonial-card__footer">
+              <img src="IMG_3964.jpeg" alt="" class="testimonial-card__avatar" loading="lazy" decoding="async" width="40" height="40">
+              <div>
+                <cite class="testimonial-card__name not-italic">Cody</cite>
+                <span class="testimonial-card__role">Client</span>
+              </div>
+            </footer>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-card__media">
+            <img src="IMG_4593.jpeg" alt="Client showing off a clean fade from Kuts By Lee" loading="lazy" decoding="async" width="600" height="480">
+          </div>
+          <div class="testimonial-card__body">
+            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="testimonial-card__quote">
+              Lee showed up on time for my house call and left me looking sharp before a big event. Professional setup, clean fade, and great conversation — exactly what you want from your barber.
+            </blockquote>
+            <footer class="testimonial-card__footer">
+              <img src="IMG_4593.jpeg" alt="" class="testimonial-card__avatar" loading="lazy" decoding="async" width="40" height="40">
+              <div>
+                <cite class="testimonial-card__name not-italic">Marcus</cite>
+                <span class="testimonial-card__role">House Call Client</span>
+              </div>
+            </footer>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-card__media">
+            <img src="IMG_4638.jpeg" alt="Client with a sharp line-up from Kuts By Lee" loading="lazy" decoding="async" width="600" height="480">
+          </div>
+          <div class="testimonial-card__body">
+            <div class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote class="testimonial-card__quote">
+              Best barber in Douglasville. The line-up and beard work are always on point, and the in-shop vibe is professional from start to finish. I won't go anywhere else.
+            </blockquote>
+            <footer class="testimonial-card__footer">
+              <img src="IMG_4638.jpeg" alt="" class="testimonial-card__avatar" loading="lazy" decoding="async" width="40" height="40">
+              <div>
+                <cite class="testimonial-card__name not-italic">Jordan</cite>
+                <span class="testimonial-card__role">In-Shop Client</span>
+              </div>
+            </footer>
+          </div>
+        </article>
       </div>
     </div>
   </section>
