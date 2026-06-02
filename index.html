@@ -395,17 +395,6 @@
       inset: 0;
       background: rgba(0, 0, 0, 0.72);
     }
-    .gallery-header {
-      display: grid;
-      gap: 1rem;
-    }
-    @media (min-width: 1024px) {
-      .gallery-header {
-        grid-template-columns: 1fr auto;
-        align-items: end;
-        gap: 1.5rem;
-      }
-    }
     .gallery-eyebrow {
       font-size: 0.72rem;
       font-weight: 800;
@@ -413,39 +402,12 @@
       text-transform: uppercase;
       color: var(--slime);
     }
-    .gallery-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      justify-content: flex-start;
-    }
-    @media (min-width: 1024px) {
-      .gallery-chips {
-        justify-content: flex-end;
-        max-width: 18rem;
-      }
-    }
-    .gallery-chip {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.45rem 0.85rem;
-      border-radius: 9999px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink);
-      background: rgba(22, 26, 22, 0.88);
-      border: 1px solid var(--border-strong);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
     .gallery-showcase {
       margin-top: 1rem;
     }
     @media (min-width: 1024px) {
       .gallery-showcase {
-        margin-top: 0.5rem;
+        margin-top: 0;
         flex: 1;
         min-height: 0;
         display: flex;
@@ -462,8 +424,9 @@
     @media (min-width: 1024px) {
       .gallery-slideshow {
         flex: 1;
-        justify-content: center;
-        gap: 0.65rem;
+        min-height: 0;
+        height: 100%;
+        gap: 0.6rem;
       }
     }
     .gallery-slideshow__frame {
@@ -475,17 +438,21 @@
       box-shadow: 0 24px 56px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(126, 203, 0, 0.12);
       width: 100%;
       aspect-ratio: 4 / 5;
+      min-height: 380px;
     }
     @media (min-width: 768px) {
       .gallery-slideshow__frame {
-        aspect-ratio: 5 / 4;
+        aspect-ratio: 4 / 5;
+        min-height: 460px;
       }
     }
     @media (min-width: 1024px) {
       .gallery-slideshow__frame {
+        flex: 1 1 auto;
         width: 100%;
         aspect-ratio: auto;
-        height: clamp(260px, 34vh, 360px);
+        min-height: clamp(520px, 62vh, 680px);
+        height: auto;
       }
     }
     .gallery-slideshow__slides {
@@ -509,7 +476,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: var(--slide-focus, center 30%);
+      object-position: var(--slide-focus, center 22%);
       transform: scale(1);
       transition: transform 6s ease-out;
     }
@@ -522,54 +489,8 @@
     .gallery-slide__shade {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(10, 12, 10, 0) 55%, rgba(10, 12, 10, 0.35) 100%);
+      background: linear-gradient(180deg, rgba(10, 12, 10, 0) 70%, rgba(10, 12, 10, 0.25) 100%);
       pointer-events: none;
-    }
-    .gallery-slideshow__meta {
-      display: grid;
-      gap: 0.75rem;
-      width: 100%;
-      padding: 0.85rem 1rem;
-      border-radius: 1rem;
-      background: rgba(22, 26, 22, 0.88);
-      border: 1px solid var(--border-strong);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-    @media (min-width: 640px) {
-      .gallery-slideshow__meta {
-        grid-template-columns: 1fr auto;
-        align-items: center;
-        gap: 1rem;
-        padding: 0.9rem 1.15rem;
-      }
-    }
-    .gallery-slideshow__info {
-      min-width: 0;
-    }
-    .gallery-slide__tag {
-      display: inline-flex;
-      padding: 0.32rem 0.7rem;
-      border-radius: 9999px;
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #0A0C0A;
-      background: var(--slime);
-    }
-    .gallery-slide__title {
-      margin-top: 0.45rem;
-      font-size: clamp(1.05rem, 2vw, 1.35rem);
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      color: var(--ink);
-    }
-    .gallery-slide__desc {
-      margin-top: 0.25rem;
-      font-size: 0.8125rem;
-      line-height: 1.45;
-      color: var(--text-muted);
     }
     .gallery-slideshow__arrow {
       position: absolute;
@@ -612,32 +533,16 @@
       background: linear-gradient(90deg, #7ECB00, #A8F020);
       transition: width 0.15s linear;
     }
-    .gallery-slideshow__toolbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-    .gallery-slideshow__counter {
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(238, 242, 232, 0.55);
-    }
-    .gallery-slideshow__counter strong {
-      color: var(--slime);
-      font-weight: 800;
-    }
-    .gallery-slideshow__book {
-      margin-left: auto;
-    }
     .gallery-slideshow__thumbs {
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 0.55rem;
       width: 100%;
+    }
+    @media (min-width: 1024px) {
+      .gallery-slideshow__thumbs {
+        grid-template-columns: repeat(10, minmax(0, 1fr));
+      }
     }
     .gallery-thumb {
       position: relative;
@@ -689,15 +594,6 @@
         flex: 0 0 4.5rem;
         scroll-snap-align: start;
       }
-      .gallery-slide__desc { display: none; }
-      .gallery-slideshow__toolbar {
-        width: 100%;
-        justify-content: space-between;
-      }
-      .gallery-slideshow__book {
-        flex: 1;
-        justify-content: center;
-      }
     }
     @media (min-width: 1024px) {
       #gallery {
@@ -707,15 +603,22 @@
         height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        padding-top: 1.75rem;
-        padding-bottom: 1.75rem;
+        justify-content: flex-start;
+        gap: 0.65rem;
+        padding-top: 1.15rem;
+        padding-bottom: 1rem;
       }
-      .gallery-header { margin-bottom: 0.75rem; }
+      .gallery-header {
+        margin-bottom: 0;
+        flex-shrink: 0;
+        align-items: center;
+      }
+      .gallery-header h2 {
+        font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+      }
       .gallery-header p.text-lg { display: none; }
-      .gallery-slideshow__book .btn-primary {
-        padding: 0.65rem 1.25rem;
-        font-size: 0.9rem;
+      .gallery-slideshow__thumbs {
+        flex-shrink: 0;
       }
     }
     .services-intro-card {
@@ -969,6 +872,31 @@
     .book-calendly .calendly-inline-widget iframe {
       color-scheme: light;
       border-radius: 0.75rem;
+    }
+    #reviews {
+      position: relative;
+      overflow: hidden;
+      background-color: #0A0C0A;
+    }
+    .reviews-panel {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .reviews-panel-bg {
+      position: absolute;
+      inset: 0;
+      background-color: #0A0C0A;
+      background-image: url('barber-bg5.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .reviews-panel-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.68);
     }
     .testimonials-eyebrow {
       font-size: 0.72rem;
@@ -1598,40 +1526,50 @@
           <h2 class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">Fresh Work</h2>
           <p class="mt-4 text-lg text-ink/70 max-w-xl leading-relaxed">Precision kuts, clean lines, and styles that speak for themselves — every client gets the same attention to detail.</p>
         </div>
-        <div class="gallery-chips" aria-label="Specialties shown in gallery">
-          <span class="gallery-chip">Fades</span>
-          <span class="gallery-chip">Line-Ups</span>
-          <span class="gallery-chip">Beard Work</span>
-          <span class="gallery-chip">Tapers</span>
-        </div>
       </div>
 
       <div class="gallery-showcase">
         <div class="gallery-slideshow" id="gallerySlideshow" aria-roledescription="carousel" aria-label="Fresh work gallery" tabindex="0">
           <div class="gallery-slideshow__frame">
             <div class="gallery-slideshow__slides">
-              <figure class="gallery-slide is-active" data-slide="0" data-tag="Fade" data-title="Signature Fade" data-desc="Crisp lines and smooth transitions — the kind of fade that turns heads." aria-hidden="false">
-                <img src="g1.jpg" alt="Signature fade haircut with crisp lines on a young client" loading="eager" decoding="async" style="--slide-focus: center 38%">
+              <figure class="gallery-slide is-active" data-slide="0" data-tag="Waves" data-title="360 Waves" data-desc="Low taper with deep waves and a razor-sharp line-up." aria-hidden="false">
+                <img src="IMG_1522.jpeg" alt="Client with 360 waves and a sharp line-up" loading="eager" decoding="async" style="--slide-focus: center 32%">
                 <div class="gallery-slide__shade" aria-hidden="true"></div>
               </figure>
-              <figure class="gallery-slide" data-slide="1" data-tag="Beard" data-title="Beard Trim" data-desc="Precision shaping and a sharp line-up." aria-hidden="true">
-                <img src="g2.jpg" alt="Beard trim and line-up precision work" loading="lazy" decoding="async" style="--slide-focus: 58% 32%">
+              <figure class="gallery-slide" data-slide="1" data-tag="Fade" data-title="Clean Fade" data-desc="Smooth blend, crisp edges, and a polished finish." aria-hidden="true">
+                <img src="IMG_1989.jpeg" alt="Fresh fade haircut" loading="lazy" decoding="async" style="--slide-focus: center 30%">
                 <div class="gallery-slide__shade" aria-hidden="true"></div>
               </figure>
-              <figure class="gallery-slide" data-slide="2" data-tag="Taper" data-title="Taper Cut" data-desc="Clean fade, sharp finish." aria-hidden="true">
-                <img src="g3.jpg" alt="Taper cut with clean finish" loading="lazy" decoding="async" style="--slide-focus: center 28%">
+              <figure class="gallery-slide" data-slide="2" data-tag="Line-Up" data-title="Sharp Line-Up" data-desc="Defined hairline and clean temple work." aria-hidden="true">
+                <img src="IMG_2043.jpeg" alt="Precision line-up and edge work" loading="lazy" decoding="async" style="--slide-focus: 52% 30%">
                 <div class="gallery-slide__shade" aria-hidden="true"></div>
               </figure>
-              <figure class="gallery-slide" data-slide="3" data-tag="Line-Up" data-title="Line-Up" data-desc="Sharp edges, clean lines." aria-hidden="true">
-                <img src="g4.jpg" alt="Line-up and edge work precision" loading="lazy" decoding="async" style="--slide-focus: 52% 32%">
+              <figure class="gallery-slide" data-slide="3" data-tag="Taper" data-title="Taper Fade" data-desc="Seamless taper with a sharp, natural finish." aria-hidden="true">
+                <img src="IMG_2556.jpeg" alt="Taper fade haircut" loading="lazy" decoding="async" style="--slide-focus: center 28%">
                 <div class="gallery-slide__shade" aria-hidden="true"></div>
               </figure>
-              <figure class="gallery-slide" data-slide="4" data-tag="Razor" data-title="Razor Finish" data-desc="Detail work and precision." aria-hidden="true">
-                <img src="g5.jpg" alt="Razor finish and detail work" loading="lazy" decoding="async" style="--slide-focus: 54% 32%">
+              <figure class="gallery-slide" data-slide="4" data-tag="Kut" data-title="Fresh Kut" data-desc="Clean, confident, and ready to walk out the chair sharp." aria-hidden="true">
+                <img src="IMG_3707.jpeg" alt="Fresh professional haircut" loading="lazy" decoding="async" style="--slide-focus: center 35%">
                 <div class="gallery-slide__shade" aria-hidden="true"></div>
               </figure>
-              <figure class="gallery-slide" data-slide="5" data-tag="Classic" data-title="Classic Cut" data-desc="Timeless style, modern execution." aria-hidden="true">
-                <img src="g6.jpg" alt="Classic cut and style" loading="lazy" decoding="async" style="--slide-focus: center 30%">
+              <figure class="gallery-slide" data-slide="5" data-tag="Fade" data-title="Signature Fade" data-desc="Crisp lines and smooth transitions — the kind of fade that turns heads." aria-hidden="true">
+                <img src="IMG_3964.jpeg" alt="Young client with a signature fade" loading="lazy" decoding="async" style="--slide-focus: center 38%">
+                <div class="gallery-slide__shade" aria-hidden="true"></div>
+              </figure>
+              <figure class="gallery-slide" data-slide="6" data-tag="Beard" data-title="Beard &amp; Fade" data-desc="Full kut with sharp beard shaping and line-up." aria-hidden="true">
+                <img src="IMG_4201.jpeg" alt="Fade with beard trim and line-up" loading="lazy" decoding="async" style="--slide-focus: 55% 32%">
+                <div class="gallery-slide__shade" aria-hidden="true"></div>
+              </figure>
+              <figure class="gallery-slide" data-slide="7" data-tag="Specialty" data-title="Dreads &amp; Line-Up" data-desc="Detailed dread work with a clean fade and beard line-up." aria-hidden="true">
+                <img src="IMG_4571.jpeg" alt="Dreadlocks with precision line-up and beard trim" loading="lazy" decoding="async" style="--slide-focus: center 20%">
+                <div class="gallery-slide__shade" aria-hidden="true"></div>
+              </figure>
+              <figure class="gallery-slide" data-slide="8" data-tag="Fade" data-title="Skin Fade" data-desc="Tight skin fade with texture on top and a sharp edge." aria-hidden="true">
+                <img src="IMG_4593.jpeg" alt="Skin fade with waves and line-up" loading="lazy" decoding="async" style="--slide-focus: 58% 32%">
+                <div class="gallery-slide__shade" aria-hidden="true"></div>
+              </figure>
+              <figure class="gallery-slide" data-slide="9" data-tag="Specialty" data-title="Twists &amp; Fade" data-desc="Styled twists with a clean fade and sharp detailing." aria-hidden="true">
+                <img src="IMG_4638.jpeg" alt="Twists with skin fade and line-up" loading="lazy" decoding="async" style="--slide-focus: center 28%">
                 <div class="gallery-slide__shade" aria-hidden="true"></div>
               </figure>
             </div>
@@ -1644,45 +1582,46 @@
             <div class="gallery-slideshow__progress" aria-hidden="true"><span id="galleryProgress"></span></div>
           </div>
 
-          <div class="gallery-slideshow__meta">
-            <div class="gallery-slideshow__info">
-              <span class="gallery-slide__tag" id="galleryActiveTag">Fade</span>
-              <h3 class="gallery-slide__title" id="galleryActiveTitle">Signature Fade</h3>
-              <p class="gallery-slide__desc" id="galleryActiveDesc">Crisp lines and smooth transitions — the kind of fade that turns heads.</p>
-            </div>
-            <div class="gallery-slideshow__toolbar">
-              <p class="gallery-slideshow__counter"><strong id="galleryCurrent">01</strong> / 06</p>
-              <a href="#book" class="gallery-slideshow__book btn-primary shadow-btn px-5 py-2.5 rounded-xl text-sm font-semibold inline-flex items-center gap-2 mobile-btn touch-target">
-                Book Your Kut
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-              </a>
-            </div>
-          </div>
-
           <div class="gallery-slideshow__thumbs" role="tablist" aria-label="Choose a slide">
-            <button type="button" class="gallery-thumb is-active" role="tab" aria-selected="true" aria-label="Signature Fade" data-slide-to="0">
-              <img src="g1.jpg" alt="" style="--slide-focus: center 38%">
+            <button type="button" class="gallery-thumb is-active" role="tab" aria-selected="true" aria-label="360 Waves" data-slide-to="0">
+              <img src="IMG_1522.jpeg" alt="" style="--slide-focus: center 32%">
+              <span class="gallery-thumb__label">Waves</span>
+            </button>
+            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Clean Fade" data-slide-to="1">
+              <img src="IMG_1989.jpeg" alt="" style="--slide-focus: center 30%">
               <span class="gallery-thumb__label">Fade</span>
             </button>
-            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Beard Trim" data-slide-to="1">
-              <img src="g2.jpg" alt="" style="--slide-focus: 58% 32%">
-              <span class="gallery-thumb__label">Beard</span>
-            </button>
-            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Taper Cut" data-slide-to="2">
-              <img src="g3.jpg" alt="" style="--slide-focus: center 28%">
-              <span class="gallery-thumb__label">Taper</span>
-            </button>
-            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Line-Up" data-slide-to="3">
-              <img src="g4.jpg" alt="" style="--slide-focus: 52% 32%">
+            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Sharp Line-Up" data-slide-to="2">
+              <img src="IMG_2043.jpeg" alt="" style="--slide-focus: 52% 30%">
               <span class="gallery-thumb__label">Line-Up</span>
             </button>
-            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Razor Finish" data-slide-to="4">
-              <img src="g5.jpg" alt="" style="--slide-focus: 54% 32%">
-              <span class="gallery-thumb__label">Razor</span>
+            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Taper Fade" data-slide-to="3">
+              <img src="IMG_2556.jpeg" alt="" style="--slide-focus: center 28%">
+              <span class="gallery-thumb__label">Taper</span>
             </button>
-            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Classic Cut" data-slide-to="5">
-              <img src="g6.jpg" alt="" style="--slide-focus: center 30%">
-              <span class="gallery-thumb__label">Classic</span>
+            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Fresh Kut" data-slide-to="4">
+              <img src="IMG_3707.jpeg" alt="" style="--slide-focus: center 35%">
+              <span class="gallery-thumb__label">Kut</span>
+            </button>
+            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Signature Fade" data-slide-to="5">
+              <img src="IMG_3964.jpeg" alt="" style="--slide-focus: center 38%">
+              <span class="gallery-thumb__label">Fade</span>
+            </button>
+            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Beard and Fade" data-slide-to="6">
+              <img src="IMG_4201.jpeg" alt="" style="--slide-focus: 55% 32%">
+              <span class="gallery-thumb__label">Beard</span>
+            </button>
+            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Dreads and Line-Up" data-slide-to="7">
+              <img src="IMG_4571.jpeg" alt="" style="--slide-focus: center 20%">
+              <span class="gallery-thumb__label">Dreads</span>
+            </button>
+            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Skin Fade" data-slide-to="8">
+              <img src="IMG_4593.jpeg" alt="" style="--slide-focus: 58% 32%">
+              <span class="gallery-thumb__label">Fade</span>
+            </button>
+            <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Twists and Fade" data-slide-to="9">
+              <img src="IMG_4638.jpeg" alt="" style="--slide-focus: center 28%">
+              <span class="gallery-thumb__label">Twists</span>
             </button>
           </div>
         </div>
@@ -1761,8 +1700,11 @@
   </section>
 
   <!-- Reviews -->
-  <section id="reviews" class="bg-mist">
-    <div class="max-w-7xl mx-auto px-4 md:px-8 py-16 lg:py-20">
+  <section id="reviews" class="relative overflow-hidden">
+    <div class="reviews-panel" aria-hidden="true">
+      <div class="reviews-panel-bg"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-16 lg:py-20">
       <p class="testimonials-eyebrow">Reviews</p>
       <h2 class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">What Clients Say</h2>
       <p class="mt-3 text-ink/70 max-w-2xl">Real kuts, real clients — hear from people who trust Lee behind the chair.</p>
@@ -2220,21 +2162,13 @@
       const thumbs = Array.from(gallerySlideshow.querySelectorAll('.gallery-thumb'));
       const prevBtn = gallerySlideshow.querySelector('.gallery-slideshow__arrow--prev');
       const nextBtn = gallerySlideshow.querySelector('.gallery-slideshow__arrow--next');
-      const currentEl = document.getElementById('galleryCurrent');
       const progressEl = document.getElementById('galleryProgress');
-      const tagEl = document.getElementById('galleryActiveTag');
-      const titleEl = document.getElementById('galleryActiveTitle');
-      const descEl = document.getElementById('galleryActiveDesc');
       const slideCount = slides.length;
       let activeIndex = 0;
       let autoplayTimer = null;
       let progressTimer = null;
       let touchStartX = 0;
       const autoplayMs = 5500;
-
-      function padSlideNumber(index) {
-        return String(index + 1).padStart(2, '0');
-      }
 
       function resetSlideMotion(slide) {
         const img = slide.querySelector('img');
@@ -2260,15 +2194,6 @@
           thumb.classList.toggle('is-active', isActive);
           thumb.setAttribute('aria-selected', isActive ? 'true' : 'false');
         });
-
-        if (currentEl) currentEl.textContent = padSlideNumber(activeIndex);
-
-        const activeSlide = slides[activeIndex];
-        if (activeSlide) {
-          if (tagEl) tagEl.textContent = activeSlide.dataset.tag || '';
-          if (titleEl) titleEl.textContent = activeSlide.dataset.title || '';
-          if (descEl) descEl.textContent = activeSlide.dataset.desc || '';
-        }
 
         restartAutoplay();
       }
