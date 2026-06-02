@@ -29,7 +29,7 @@
   <link rel="dns-prefetch" href="//cdn.jsdelivr.net" crossorigin>
   
   <title>Kuts By Lee | Barber in Douglasville, GA | Fades, Specialty Kuts & House Calls</title>
-  <meta name="description" content="Kuts By Lee — professional barber in Douglasville, GA. Fades, specialty kuts, line-ups, beard trims & house calls. In-shop Tue–Sat 12–8. Book online or call (404) 441-7159." />
+  <meta name="description" content="Kuts By Lee — professional barber in Douglasville, GA. Fades, specialty kuts, line-ups, beard trims & house calls. In-shop Mon–Sat 12–8. Book online or call (404) 441-7159." />
   <meta name="keywords" content="mobile barber douglasville, barber douglasville ga, fade haircut douglasville, beard trim douglasville, house call barber douglasville, mobile barber douglas county, barber shop douglasville, haircut douglasville, fade douglasville, taper cut douglasville, line up douglasville, razor finish douglasville, professional barber douglasville, licensed barber douglasville, mobile barber service douglasville, barber near me douglasville, best barber douglasville, african american barber douglasville, black barber douglasville, barber 2025, mobile barber 2025" />
   <meta name="author" content="Kuts By Lee" />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
@@ -44,7 +44,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://kutsbylee.com/" />
   <meta property="og:title" content="Kuts By Lee | Barber in Douglasville, GA" />
-  <meta property="og:description" content="Fades, specialty kuts, line-ups & house calls in Douglasville & Douglas County. In-shop Tue–Sat, house calls Mon–Tue. Book online today!" />
+  <meta property="og:description" content="Fades, specialty kuts, line-ups & house calls in Douglasville & Douglas County. In-shop Mon–Sat, house calls Mon–Tue. Book online today!" />
   <meta property="og:image" content="https://kutsbylee.com/SEO.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -117,7 +117,7 @@
     "@type": "Barbershop",
     "name": "Kuts By Lee",
     "alternateName": "Kuts By Lee Barber",
-    "description": "Professional barber serving Douglasville, GA and surrounding areas. Fades, specialty kuts, line-ups, beard trims, and house calls with 4+ years of experience.",
+    "description": "Professional barber serving Douglasville, GA and surrounding areas. Fades, specialty kuts, line-ups, beard trims, and house calls with 5+ years of experience.",
     "url": "https://kutsbylee.com/",
     "logo": "https://kutsbylee.com/logo.PNG",
     "image": "https://kutsbylee.com/SEO.jpg",
@@ -219,7 +219,7 @@
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
         "opens": "12:00",
         "closes": "20:00"
       },
@@ -275,7 +275,7 @@
       "@type": "Person",
       "name": "Lee",
       "jobTitle": "Professional Barber",
-      "description": "Licensed barber with 4+ years of professional experience specializing in fades, tapers, and mobile services."
+      "description": "Licensed barber with 5+ years of professional experience specializing in fades, tapers, and mobile services."
     },
     "foundingDate": "2021",
     "knowsAbout": ["Haircuts", "Fades", "Tapers", "Beard Trims", "Line-ups", "Mobile Barber Services"],
@@ -927,6 +927,49 @@
       margin-top: 0.15rem;
       color: var(--slime);
     }
+    #book {
+      position: relative;
+    }
+    .book-calendly {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.25rem;
+      border: 1px solid var(--border-strong);
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.4);
+    }
+    .book-calendly__bg {
+      position: absolute;
+      inset: 0;
+      background-color: #0A0C0A;
+      background-image: url('slime.png');
+      background-repeat: repeat-x;
+      background-position: top center;
+      background-size: auto;
+      pointer-events: none;
+    }
+    .book-calendly__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.62);
+    }
+    .book-calendly__inner {
+      position: relative;
+      z-index: 1;
+      padding: 2rem 1rem 1rem;
+    }
+    @media (min-width: 768px) {
+      .book-calendly__inner { padding: 2.5rem 1.25rem 1.25rem; }
+    }
+    .book-calendly .calendly-inline-widget {
+      background: transparent !important;
+      min-width: 100%;
+      height: 740px;
+    }
+    .book-calendly .calendly-inline-widget iframe {
+      color-scheme: light;
+      border-radius: 0.75rem;
+    }
     .contact-book-link {
       display: inline-flex;
       align-items: center;
@@ -1274,7 +1317,7 @@
           <h1 class="text-5xl md:text-6xl font-extrabold leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]">
             Sharp Kuts. <span class="text-slime">House Calls.</span> On Your Time.
           </h1>
-          <p class="mt-4 text-lg text-white/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.4)]">I'm Lee — professional barber with 4+ years behind the chair. In-shop Tue–Sat or I bring the shop to you on Mon & Tue.</p>
+          <p class="mt-4 text-lg text-white/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.4)]">I'm Lee — professional barber with <span class="text-slime font-semibold">5+ years</span> behind the chair.<br>In-shop <span class="text-slime font-semibold">Monday–Saturday</span>.</p>
           <div class="mt-6 flex flex-wrap gap-3 justify-center">
             <a href="#book" class="btn-primary shadow-btn px-6 py-3 rounded-xl font-semibold mobile-btn touch-target">Book a Kut</a>
             <a href="tel:+14044417159" class="px-6 py-3 rounded-xl border border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 mobile-btn touch-target text-white">Call (404) 441-7159</a>
@@ -1289,7 +1332,7 @@
     <div class="grid md:grid-cols-2 gap-10 items-center">
       <div>
         <h2 class="text-3xl font-bold">Meet Lee</h2>
-        <p class="mt-3 text-ink/75">With 4+ years of professional experience, I specialize in fades, specialty kuts, shape-ups, beard line-ups, and clean razor finishes. Walk in for an in-shop appointment or book a house call — I show up equipped so you look sharp.</p>
+        <p class="mt-3 text-ink/75">With 5+ years of professional experience, I specialize in fades, specialty kuts, shape-ups, beard line-ups, and clean razor finishes. Walk in for an in-shop appointment or book a house call — I show up equipped so you look sharp.</p>
         <ul class="mt-6 space-y-2 text-ink/75">
           <li>• Licensed & insured</li>
           <li>• In-shop & house calls in Douglasville & nearby</li>
@@ -1300,7 +1343,7 @@
           <div class="mt-4 grid sm:grid-cols-2 gap-6 text-ink/80">
             <div>
               <p class="font-semibold text-ink">In-Shop</p>
-              <p class="mt-1 text-sm">Tue – Sat · 12:00 PM – 8:00 PM</p>
+              <p class="mt-1 text-sm">Mon – Sat · 12:00 PM – 8:00 PM</p>
             </div>
             <div>
               <p class="font-semibold text-ink">House Calls</p>
@@ -1327,7 +1370,7 @@
           <div class="services-intro-card">
             <p class="text-sm font-bold uppercase tracking-[0.2em] text-white/85">Kuts By Lee</p>
             <h2 class="mt-4 text-3xl md:text-4xl xl:text-[2.65rem] font-extrabold uppercase">Professional Kut Services Tailored to You</h2>
-            <p class="mt-5 text-base md:text-lg text-white/90 leading-relaxed">Fades, specialty kuts, line-ups, and beard work — in-shop Tue–Sat or house calls Mon & Tue across Douglasville and Douglas County.</p>
+            <p class="mt-5 text-base md:text-lg text-white/90 leading-relaxed">Fades, specialty kuts, line-ups, and beard work — in-shop Mon–Sat or house calls Mon & Tue across Douglasville and Douglas County.</p>
             <a href="#book" class="mt-8 inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-slime font-semibold shadow-lg hover:brightness-105 transition mobile-btn touch-target">Book a Service</a>
           </div>
         </div>
@@ -1589,8 +1632,15 @@
   <!-- Calendly -->
   <section id="book" class="max-w-7xl mx-auto px-4 py-16">
     <h2 class="text-3xl font-bold mb-6">Book Your Kut</h2>
-    <div class="rounded-2xl overflow-hidden ring-4 ring-slime/20">
-      <div class="calendly-inline-widget" data-url="https://calendly.com/cutitoutlee/30min" style="min-width:320px;height:740px;"></div>
+    <div class="book-calendly">
+      <div class="book-calendly__bg" aria-hidden="true"></div>
+      <div class="book-calendly__inner">
+        <div
+          class="calendly-inline-widget"
+          data-url="https://calendly.com/cutitoutlee/30min?hide_gdpr_banner=1&amp;background_color=0a0c0a&amp;text_color=eef2e8&amp;primary_color=7ecb00"
+          style="min-width:320px;height:740px;"
+        ></div>
+      </div>
     </div>
   </section>
 
@@ -1643,7 +1693,7 @@
             </div>
             <div class="contact-details__row">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>
-              <span><strong class="text-ink">In-shop hours</strong><br>Tue – Sat · 12:00 PM – 8:00 PM</span>
+              <span><strong class="text-ink">In-shop hours</strong><br>Mon – Sat · 12:00 PM – 8:00 PM</span>
             </div>
             <div class="contact-details__row">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-7 9 7v8a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1v-8z"/></svg>
