@@ -1,20 +1,29 @@
+# Kuts By Lee — https://kutsbylee.com/
+# Barber in Douglasville, GA & Douglas County
+
 User-agent: *
 Allow: /
-Disallow: /.well-known/
-Disallow: /security-policy
-Disallow: /admin/
-Disallow: /private/
-Disallow: /api/
-Disallow: /internal/
+Disallow: /.well-known/security-policy
+Disallow: /Contact-Template.html
+Disallow: /.venv-favicon/
 
-# Security: Prevent crawling of sensitive areas
-User-agent: *
-Disallow: /cgi-bin/
-Disallow: /tmp/
-Disallow: /logs/
-Disallow: /backup/
+# Search engines
+User-agent: Googlebot
+Allow: /
 
-# Security: Block malicious bots
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Block aggressive SEO scrapers (optional bandwidth protection)
 User-agent: AhrefsBot
 Disallow: /
 
@@ -24,8 +33,7 @@ Disallow: /
 User-agent: MJ12bot
 Disallow: /
 
-# Security: Rate limiting hint
-Crawl-delay: 1
+# LLM / AI discovery
+Allow: /llms.txt
 
-# Security: Sitemap location
-Sitemap: https://cutitoutlee.cochranfilms.com/sitemap.xml
+Sitemap: https://kutsbylee.com/sitemap.xml
