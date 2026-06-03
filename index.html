@@ -6,13 +6,12 @@
   
   <!-- Security Headers & Policies -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="X-XSS-Protection" content="1; mode=block">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
   
   <!-- Content Security Policy -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://assets.calendly.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://api.emailjs.com https://assets.calendly.com https://www.google-analytics.com; frame-src 'self' https://calendly.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://assets.calendly.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://api.emailjs.com https://assets.calendly.com https://www.google-analytics.com; frame-src 'self' https://calendly.com; object-src 'none'; base-uri 'self'; form-action 'self';">
   
   <!-- Feature Policy -->
   <meta http-equiv="Feature-Policy" content="geolocation 'none'; microphone 'none'; camera 'none'; payment 'none'; usb 'none'; magnetometer 'none'; gyroscope 'none'; accelerometer 'none'">
@@ -2432,15 +2431,15 @@
         safeSetInnerHTML(statusEl, 'Sending...');
         
         await emailjs.send('service_i0b58fn', 'template_lo49jrf', {
+          to_email: 'cutitoutlee@gmail.com',
+          reply_to: data.email,
           name: data.name,
           phone: data.phone || '',
           email: data.email,
           service: data.service,
           date: data.date || '',
           message: data.message || '',
-          booking_url: 'https://calendly.com/cutitoutlee/30min',
-          timestamp: new Date().toISOString(),
-          user_agent: navigator.userAgent.substring(0, 100) // Limited user agent info
+          booking_url: 'https://calendly.com/cutitoutlee/30min'
         });
         
         safeSetInnerHTML(statusEl, 'Thanks! Your message has been sent.');
@@ -2451,7 +2450,7 @@
         Object.keys(data).forEach(key => data[key] = null);
         
       } catch (err) {
-        console.error('Form submission error:', err);
+        console.error('Form submission error:', err?.text || err);
         safeSetInnerHTML(statusEl, 'Sorry, something went wrong. Please try again or call (404) 441-7159.');
         showToast('Send failed. Try again or call (404) 441-7159.', true);
       }
