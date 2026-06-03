@@ -100,7 +100,6 @@
     .hero-section { min-height: 60vh; }
     .mobile-optimized { -webkit-font-smoothing: antialiased; }
     @media (max-width: 768px) {
-      .hero-section { min-height: 50vh; }
       .mobile-text { font-size: clamp(1rem, 4vw, 1.125rem); }
     }
   </style>
@@ -258,9 +257,9 @@
         },
         "author": {
           "@type": "Person",
-          "name": "Marcus Johnson"
+          "name": "Amari"
         },
-        "reviewBody": "Me trusting you to cut my hair gotta be one of the best decisions I made"
+        "reviewBody": "Lee cut me how I expected and got me fast and great service and is worth the money! Best barber in douglasville! Highly recommend. Also great communication"
       },
       {
         "@type": "Review",
@@ -350,8 +349,40 @@
     .btn-primary { background: linear-gradient(180deg, #A8F020 0%, #7ECB00 100%); color: #fff; }
     .btn-primary:hover { filter: brightness(1.05); }
     .site-nav .btn-primary,
-    .header-actions .btn-primary {
+    .header-actions .btn-primary,
+    .header-mobile-book {
       color: #0A0C0A;
+    }
+    .header-mobile-book {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      white-space: nowrap;
+      line-height: 1.2;
+      min-height: 44px;
+      padding: 0.5rem 0.9rem;
+    }
+    .mobile-header-bar {
+      padding-top: max(0.5rem, env(safe-area-inset-top));
+    }
+    .hero-banner {
+      overflow: hidden;
+      width: 100%;
+      height: 72vh;
+      min-height: 420px;
+    }
+    .hero-banner__img {
+      display: block;
+      width: auto;
+      min-width: 100%;
+      max-width: none;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+    .hero-content h1 {
+      font-size: clamp(2.1rem, 8.5vw, 3.75rem);
     }
     .toast { background: rgba(22, 26, 22, 0.96); border: 1px solid rgba(126,203,0,.35); box-shadow: 0 8px 24px rgba(0,0,0,.45); color: var(--ink); }
     .services-panel {
@@ -1016,6 +1047,7 @@
     }
     .testimonial-card__stars {
       display: flex;
+      justify-content: center;
       gap: 0.15rem;
       margin-bottom: 0.85rem;
       color: var(--slime);
@@ -1028,6 +1060,7 @@
       font-size: 0.9375rem;
       line-height: 1.65;
       color: var(--text-muted);
+      text-align: center;
     }
     .testimonial-card__quote::before {
       content: '\201C';
@@ -1187,37 +1220,92 @@
     
     /* Mobile Optimizations */
     @media (max-width: 768px) {
+      :root {
+        --header-height: 5.5rem;
+      }
+      body {
+        overflow-x: hidden;
+      }
       .ring-3d { box-shadow: inset 0 1px 2px rgba(255,255,255,.35), inset 0 -2px 4px rgba(0,0,0,.12), 0 4px 12px rgba(126,203,0,.2); }
       .btn-primary { background: linear-gradient(180deg, #A8F020 0%, #7ECB00 100%); }
       .btn-primary:active { transform: scale(0.98); }
-      
+
       /* Mobile-specific performance */
       .mobile-optimize { will-change: auto; }
       .mobile-optimize img { image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; }
-      
+
       /* Touch-friendly sizing */
       .touch-target { min-height: 44px; min-width: 44px; }
-      
+      .header-mobile-book.touch-target { min-width: auto; }
+
       /* Mobile navigation optimizations */
       .mobile-nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-      
+
+      /* Hero stays wide — crop sides instead of shrinking */
+      .hero-banner {
+        height: 72vh;
+        min-height: 380px;
+      }
+
       /* Mobile gallery optimizations */
+      .gallery-slideshow__frame { min-height: 320px; }
       .gallery-slideshow__arrow { width: 2.35rem; height: 2.35rem; }
-      
+
       /* Mobile form optimizations */
-      .mobile-form input, .mobile-form select, .mobile-form textarea { 
-        font-size: 16px; /* Prevents zoom on iOS */
+      .mobile-form input, .mobile-form select, .mobile-form textarea {
+        font-size: 16px;
         -webkit-appearance: none;
         border-radius: 12px;
       }
-      
-          /* Mobile button optimizations */
-    .mobile-btn { 
-      touch-action: manipulation;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
+
+      /* Mobile button optimizations */
+      .mobile-btn {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+      }
+
+      /* Service cards — stack content cleanly on narrow screens */
+      .service-item {
+        grid-template-columns: auto 1fr;
+        grid-template-areas:
+          "icon content"
+          "actions actions";
+        gap: 0.75rem 0.85rem;
+        padding: 0.95rem;
+      }
+      .service-item__icon { grid-area: icon; }
+      .service-item > div:not(.service-item__actions) { grid-area: content; }
+      .service-item__actions {
+        grid-area: actions;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        gap: 0.65rem;
+        padding-top: 0.35rem;
+        border-top: 1px solid var(--border);
+      }
+
+      .services-intro-card {
+        padding: 1.5rem 1.25rem 1.65rem;
+      }
+      .services-menu-panel {
+        padding: 1.15rem;
+      }
+
+      .testimonial-card__footer {
+        justify-content: center;
+        text-align: center;
+      }
+
+      footer .max-w-7xl {
+        text-align: center;
+      }
+      footer .max-w-7xl > div {
+        justify-content: center;
+      }
     }
-    
+
     /* Mobile Menu Styles */
     .mobile-menu-link {
       display: block;
@@ -1265,7 +1353,7 @@
       opacity: 1;
       visibility: visible;
     }
-    
+
     /* Security-focused CSS */
     /* Prevent text selection for sensitive content */
     .no-select {
@@ -1308,8 +1396,7 @@
       outline: 2px solid var(--slime) !important;
       outline-offset: 2px !important;
     }
-    }
-    
+
     /* Performance Optimizations */
     .performance-optimize {
       contain: layout style paint;
@@ -1347,10 +1434,23 @@
   <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] bg-surface text-ink px-4 py-2 rounded-lg border border-slime/30">Skip to content</a>
   <!-- Nav -->
   <header class="sticky top-0 z-50 backdrop-blur bg-cream/90 border-b border-slime/20 mobile-nav shadow-[0_8px_32px_rgba(0,0,0,0.45)]">
-    <div class="max-w-7xl mx-auto px-4 pt-3 md:pt-4 pb-4 md:pb-6">
-      <div class="w-full flex justify-center">
+    <div class="max-w-7xl mx-auto px-4 md:pt-4 pb-3 md:pb-6">
+      <!-- Mobile: logo centered on same row as menu + Book Now -->
+      <div class="mobile-header-bar md:hidden grid grid-cols-[auto_1fr_auto] items-center gap-2">
+        <button id="mobileMenuBtn" class="mobile-btn touch-target p-2 rounded-lg hover:bg-slime/10 transition-colors justify-self-start" aria-label="Toggle mobile menu" aria-expanded="false">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+        <a href="#main" class="justify-self-center block" aria-label="Go to top">
+          <img src="logo_big.png" onerror="this.src='logo.PNG'" alt="Kuts By Lee logo" class="h-11 w-auto max-w-[9.5rem] object-contain mobile-optimize mx-auto" />
+        </a>
+        <a href="#book" class="header-mobile-book btn-primary shadow-btn rounded-full text-sm font-semibold mobile-btn touch-target justify-self-end" aria-label="Book appointment">Book Now</a>
+      </div>
+      <!-- Desktop: centered logo above nav -->
+      <div class="hidden md:flex w-full justify-center pt-3">
         <a href="#main" class="block" aria-label="Go to top">
-          <img src="logo_big.png" onerror="this.src='logo.PNG'" alt="Kuts By Lee logo" class="h-16 w-16 md:h-24 md:w-24 lg:h-28 lg:w-28 object-contain mobile-optimize" />
+          <img src="logo_big.png" onerror="this.src='logo.PNG'" alt="Kuts By Lee logo" class="h-24 w-24 lg:h-28 lg:w-28 object-contain mobile-optimize" />
         </a>
       </div>
       <nav class="site-nav hidden md:flex justify-center mt-3 md:mt-4">
@@ -1364,15 +1464,6 @@
           <a href="#book" class="btn-primary shadow-btn px-4 py-2 rounded-lg text-sm font-semibold mobile-btn touch-target" aria-label="Book appointment via Calendly">Book Now</a>
         </div>
       </nav>
-      <!-- Mobile Hamburger Menu -->
-      <div class="header-actions md:hidden flex items-center justify-between mt-3">
-        <button id="mobileMenuBtn" class="mobile-btn touch-target p-2 rounded-lg hover:bg-slime/10 transition-colors" aria-label="Toggle mobile menu" aria-expanded="false">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-        <a href="#book" class="btn-primary shadow-btn px-4 py-2 rounded-full text-sm font-semibold mobile-btn touch-target" aria-label="Book appointment">Book Now</a>
-      </div>
       
       <!-- Mobile Menu Overlay -->
       <div id="mobileMenu" class="md:hidden fixed inset-0 z-40 bg-cream/98 backdrop-blur-lg transform translate-x-full transition-transform duration-300 ease-in-out">
@@ -1425,19 +1516,21 @@
   </header>
 
   <!-- Hero -->
-  <section class="relative" id="main">
-    <img src="barber-bg3.png" alt="Classic barber pole outside a barbershop" class="w-full h-[72vh] md:h-[72vh] h-[60vh] object-cover object-center" loading="eager" decoding="async" fetchpriority="high">
+  <section class="relative hero-section" id="main">
+    <div class="hero-banner">
+      <img src="barber-bg3.png" alt="Classic barber pole outside a barbershop" class="hero-banner__img" loading="eager" decoding="async" fetchpriority="high">
+    </div>
     <div class="absolute inset-0 flex items-center">
       <div class="max-w-7xl mx-auto px-4 w-full">
-        <div class="max-w-2xl mx-auto text-center">
+        <div class="max-w-2xl mx-auto text-center hero-content">
           <p class="uppercase tracking-widest text-sm font-bold text-white/90 mb-4">Douglasville • In-Shop & House Calls</p>
-          <h1 class="text-5xl md:text-6xl font-extrabold leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]">
+          <h1 class="font-extrabold leading-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]">
             Sharp Kuts. <span class="text-slime">House Calls.</span> On Your Time.
           </h1>
-          <p class="mt-4 text-lg text-white/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.4)]">I'm Lee — professional barber with <span class="text-slime font-semibold">5+ years</span> behind the chair.<br>In-shop <span class="text-slime font-semibold">Monday–Saturday</span>.</p>
-          <div class="mt-6 flex flex-wrap gap-3 justify-center">
-            <a href="#book" class="btn-primary shadow-btn px-6 py-3 rounded-xl font-semibold mobile-btn touch-target">Book a Kut</a>
-            <a href="tel:+14044417159" class="px-6 py-3 rounded-xl border border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 mobile-btn touch-target text-white">Call (404) 441-7159</a>
+          <p class="mt-4 text-base md:text-lg text-white/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.4)] mobile-text">I'm Lee — professional barber with <span class="text-slime font-semibold">5+ years</span> behind the chair.<br>In-shop <span class="text-slime font-semibold">Monday–Saturday</span>.</p>
+          <div class="mt-6 flex flex-col sm:flex-row flex-wrap gap-3 justify-center items-stretch sm:items-center max-w-sm sm:max-w-none mx-auto">
+            <a href="#book" class="btn-primary shadow-btn px-6 py-3 rounded-xl font-semibold mobile-btn touch-target text-center">Book a Kut</a>
+            <a href="tel:+14044417159" class="px-6 py-3 rounded-xl border border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 mobile-btn touch-target text-white text-center">Call (404) 441-7159</a>
           </div>
         </div>
       </div>
@@ -1508,17 +1601,17 @@
 
         <article class="testimonial-card">
           <div class="testimonial-card__media">
-            <img src="IMG_4201.jpeg" alt="Marcus with a fresh fade and styled dreads at Kuts By Lee" loading="lazy" decoding="async" width="600" height="480">
+            <img src="IMG_4593.jpeg" alt="Amari with a fresh fade and styled locs at Kuts By Lee" loading="lazy" decoding="async" width="600" height="480">
           </div>
           <div class="testimonial-card__body">
             <div class="testimonial-card__stars" aria-label="5 out of 5 stars">★★★★★</div>
             <blockquote class="testimonial-card__quote">
-              Me trusting you to cut my hair gotta be one of the best decisions I made
+              Lee cut me how I expected and got me fast and great service and is worth the money! Best barber in douglasville! Highly recommend. Also great communication
             </blockquote>
             <footer class="testimonial-card__footer">
-              <img src="IMG_4201.jpeg" alt="" class="testimonial-card__avatar" loading="lazy" decoding="async" width="40" height="40">
+              <img src="IMG_4593.jpeg" alt="" class="testimonial-card__avatar" loading="lazy" decoding="async" width="40" height="40">
               <div>
-                <cite class="testimonial-card__name not-italic">Marcus</cite>
+                <cite class="testimonial-card__name not-italic">Amari</cite>
                 <span class="testimonial-card__role">House Call Client</span>
               </div>
             </footer>
