@@ -159,7 +159,7 @@
           "width": 1200,
           "height": 630
         },
-        "dateModified": "2026-06-03",
+        "dateModified": "2026-06-03T18:00:00-04:00",
         "inLanguage": "en-US"
       },
       {
@@ -227,7 +227,7 @@
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Beard Line-Up", "description": "Precision beard shaping and line-up" }, "price": "20", "priceCurrency": "USD" },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kut + Beard", "description": "Full haircut with beard trim and line-up" }, "price": "35", "priceCurrency": "USD" },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Specialty Kut + Beard", "description": "Specialty styling with full beard work" }, "price": "40", "priceCurrency": "USD" },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "House Call", "description": "Mobile barber at your location (Mon & Tue; +$20 travel)" }, "price": "20", "priceCurrency": "USD", "description": "Travel fee added to service price" },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "House Call", "description": "Mobile barber at your location (Mon & Tue). Travel fee added to service price." }, "price": "20", "priceCurrency": "USD" },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Steam Towel Add-On" }, "price": "10", "priceCurrency": "USD" },
             { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Shampoo Add-On" }, "price": "20", "priceCurrency": "USD" }
           ]
@@ -253,25 +253,6 @@
         "paymentAccepted": ["Cash", "Credit Card", "Contactless"],
         "hasMap": "https://www.google.com/maps/search/?api=1&query=Douglasville%2C+GA+30135",
         "sameAs": ["https://calendly.com/cutitoutlee/30min"],
-        "potentialAction": {
-          "@type": "ReserveAction",
-          "target": {
-            "@type": "EntryPoint",
-            "urlTemplate": "https://calendly.com/cutitoutlee/30min",
-            "actionPlatform": [
-              "http://schema.org/DesktopWebPlatform",
-              "http://schema.org/MobileWebPlatform"
-            ]
-          },
-          "name": "Book a Kut Online"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": 5,
-          "reviewCount": 3,
-          "bestRating": 5,
-          "worstRating": 1
-        },
         "employee": {
           "@type": "Person",
           "@id": "https://kutsbylee.com/#lee",
@@ -282,7 +263,28 @@
           "knowsAbout": ["Fades", "Skin Fades", "Tapers", "360 Waves", "Line-Ups", "Beard Trims", "Specialty Haircuts", "House Call Barber Services"]
         },
         "foundingDate": "2021",
-        "knowsAbout": ["Barbering", "Men's Haircuts", "Fades", "Beard Grooming", "Mobile Barber Services", "Douglasville GA"]
+        "knowsAbout": ["Barbering", "Men's Haircuts", "Fades", "Beard Grooming", "Mobile Barber Services", "Douglasville GA"],
+        "potentialAction": {
+          "@type": "ReserveAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://calendly.com/cutitoutlee/30min",
+            "actionPlatform": [
+              "https://schema.org/DesktopWebPlatform",
+              "https://schema.org/MobileWebPlatform"
+            ]
+          },
+          "name": "Book a Kut Online"
+        }
+      },
+      {
+        "@type": "AggregateRating",
+        "@id": "https://kutsbylee.com/#aggregate-rating",
+        "ratingValue": 5,
+        "reviewCount": 3,
+        "bestRating": 5,
+        "worstRating": 1,
+        "itemReviewed": { "@type": "LocalBusiness", "@id": "https://kutsbylee.com/#business", "name": "Kuts By Lee" }
       },
       {
         "@type": "Review",
