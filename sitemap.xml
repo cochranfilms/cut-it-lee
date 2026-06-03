@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://kutsbylee.com/</loc>
     <lastmod>2026-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en-US" href="https://kutsbylee.com/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://kutsbylee.com/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://kutsbylee.com/" />
     <image:image>
       <image:loc>https://kutsbylee.com/og-image.png</image:loc>
-      <image:title>Kuts By Lee — Barber in Douglasville, GA</image:title>
+      <image:title>Kuts By Lee - Barber in Douglasville GA</image:title>
       <image:caption>Professional barber fades, specialty kuts, and house calls in Douglasville and Douglas County, Georgia</image:caption>
     </image:image>
     <image:image>
@@ -22,51 +18,10 @@
     <image:image>
       <image:loc>https://kutsbylee.com/barber-bg3.png</image:loc>
       <image:title>Kuts By Lee barbershop hero</image:title>
-      <image:caption>Barber in Douglasville, GA — in-shop and mobile house call services</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://kutsbylee.com/about.jpg</image:loc>
-      <image:title>Mobile barber kit — Kuts By Lee Douglasville</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://kutsbylee.com/IMG_1522.jpeg</image:loc>
-      <image:title>360 waves haircut Douglasville barber</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://kutsbylee.com/IMG_1989.jpeg</image:loc>
-      <image:title>Clean fade haircut Kuts By Lee</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://kutsbylee.com/IMG_2043.jpeg</image:loc>
-      <image:title>Precision line-up Douglasville barber</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://kutsbylee.com/IMG_2556.jpeg</image:loc>
-      <image:title>Taper fade haircut Douglas County</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://kutsbylee.com/IMG_3707.jpeg</image:loc>
-      <image:title>Fresh kut professional haircut</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://kutsbylee.com/IMG_3964.jpeg</image:loc>
-      <image:title>Signature fade barber Douglasville</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://kutsbylee.com/IMG_4201.jpeg</image:loc>
-      <image:title>Beard trim and fade Kuts By Lee</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://kutsbylee.com/IMG_4571.jpeg</image:loc>
-      <image:title>Dreads line-up specialty kut</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://kutsbylee.com/IMG_4593.jpeg</image:loc>
-      <image:title>Skin fade waves line-up Douglasville</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://kutsbylee.com/IMG_4638.jpeg</image:loc>
-      <image:title>Twists and skin fade barber portfolio</image:title>
+      <image:title>Mobile barber kit - Kuts By Lee Douglasville</image:title>
     </image:image>
   </url>
 </urlset>
