@@ -461,6 +461,14 @@
       min-height: 0;
       width: 100%;
     }
+    .gallery-slideshow:focus,
+    .gallery-slideshow:focus-visible {
+      outline: none !important;
+    }
+    .gallery-thumb:focus:not(:focus-visible),
+    .gallery-slideshow__arrow:focus:not(:focus-visible) {
+      outline: none !important;
+    }
     @media (min-width: 1024px) {
       .gallery-slideshow {
         flex: 1;
@@ -1797,11 +1805,11 @@
           <div class="gallery-slideshow__frame">
             <div class="gallery-slideshow__slides">
               <figure class="gallery-slide is-active" data-slide="0" data-tag="Waves" data-title="360 Waves" data-desc="Low taper with deep waves and a razor-sharp line-up." aria-hidden="false">
-                <img src="IMG_1522.jpeg" alt="Client with 360 waves and a sharp line-up" loading="eager" decoding="async" style="--slide-focus: center 32%">
+                <img src="IMG_1522.jpeg" alt="Client with 360 waves and a sharp line-up" loading="eager" decoding="async" style="--slide-focus: center 42%">
                 <div class="gallery-slide__shade" aria-hidden="true"></div>
               </figure>
               <figure class="gallery-slide" data-slide="1" data-tag="Fade" data-title="Clean Fade" data-desc="Smooth blend, crisp edges, and a polished finish." aria-hidden="true">
-                <img src="IMG_1989.jpeg" alt="Fresh fade haircut" loading="lazy" decoding="async" style="--slide-focus: center 30%">
+                <img src="IMG_1989.jpeg" alt="Fresh fade haircut" loading="lazy" decoding="async" style="--slide-focus: center 42%">
                 <div class="gallery-slide__shade" aria-hidden="true"></div>
               </figure>
               <figure class="gallery-slide" data-slide="2" data-tag="Line-Up" data-title="Sharp Line-Up" data-desc="Defined hairline and clean temple work." aria-hidden="true">
@@ -1825,15 +1833,15 @@
                 <div class="gallery-slide__shade" aria-hidden="true"></div>
               </figure>
               <figure class="gallery-slide" data-slide="7" data-tag="Specialty" data-title="Dreads &amp; Line-Up" data-desc="Detailed dread work with a clean fade and beard line-up." aria-hidden="true">
-                <img src="IMG_4571.jpeg" alt="Dreadlocks with precision line-up and beard trim" loading="lazy" decoding="async" style="--slide-focus: center 20%">
+                <img src="IMG_4571.jpeg" alt="Dreadlocks with precision line-up and beard trim" loading="lazy" decoding="async" style="--slide-focus: center 42%">
                 <div class="gallery-slide__shade" aria-hidden="true"></div>
               </figure>
               <figure class="gallery-slide" data-slide="8" data-tag="Fade" data-title="Skin Fade" data-desc="Tight skin fade with texture on top and a sharp edge." aria-hidden="true">
-                <img src="IMG_4593.jpeg" alt="Skin fade with waves and line-up" loading="lazy" decoding="async" style="--slide-focus: 58% 32%">
+                <img src="IMG_4593.jpeg" alt="Skin fade with waves and line-up" loading="lazy" decoding="async" style="--slide-focus: 58% 42%">
                 <div class="gallery-slide__shade" aria-hidden="true"></div>
               </figure>
               <figure class="gallery-slide" data-slide="9" data-tag="Specialty" data-title="Twists &amp; Fade" data-desc="Styled twists with a clean fade and sharp detailing." aria-hidden="true">
-                <img src="IMG_4638.jpeg" alt="Twists with skin fade and line-up" loading="lazy" decoding="async" style="--slide-focus: center 28%">
+                <img src="IMG_4638.jpeg" alt="Twists with skin fade and line-up" loading="lazy" decoding="async" style="--slide-focus: center 32%">
                 <div class="gallery-slide__shade" aria-hidden="true"></div>
               </figure>
             </div>
@@ -1848,11 +1856,11 @@
 
           <div class="gallery-slideshow__thumbs" role="tablist" aria-label="Choose a slide">
             <button type="button" class="gallery-thumb is-active" role="tab" aria-selected="true" aria-label="360 Waves" data-slide-to="0">
-              <img src="IMG_1522.jpeg" alt="" style="--slide-focus: center 32%">
+              <img src="IMG_1522.jpeg" alt="" style="--slide-focus: center 42%">
               <span class="gallery-thumb__label">Waves</span>
             </button>
             <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Clean Fade" data-slide-to="1">
-              <img src="IMG_1989.jpeg" alt="" style="--slide-focus: center 30%">
+              <img src="IMG_1989.jpeg" alt="" style="--slide-focus: center 42%">
               <span class="gallery-thumb__label">Fade</span>
             </button>
             <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Sharp Line-Up" data-slide-to="2">
@@ -1876,15 +1884,15 @@
               <span class="gallery-thumb__label">Beard</span>
             </button>
             <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Dreads and Line-Up" data-slide-to="7">
-              <img src="IMG_4571.jpeg" alt="" style="--slide-focus: center 20%">
+              <img src="IMG_4571.jpeg" alt="" style="--slide-focus: center 42%">
               <span class="gallery-thumb__label">Dreads</span>
             </button>
             <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Skin Fade" data-slide-to="8">
-              <img src="IMG_4593.jpeg" alt="" style="--slide-focus: 58% 32%">
+              <img src="IMG_4593.jpeg" alt="" style="--slide-focus: 58% 42%">
               <span class="gallery-thumb__label">Fade</span>
             </button>
             <button type="button" class="gallery-thumb" role="tab" aria-selected="false" aria-label="Twists and Fade" data-slide-to="9">
-              <img src="IMG_4638.jpeg" alt="" style="--slide-focus: center 28%">
+              <img src="IMG_4638.jpeg" alt="" style="--slide-focus: center 32%">
               <span class="gallery-thumb__label">Twists</span>
             </button>
           </div>
