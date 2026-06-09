@@ -130,7 +130,7 @@
   </script>
   -->
   
-  <!-- Structured data: WebSite, WebPage, LocalBusiness, reviews (Google-valid types) -->
+  <!-- Structured data: WebSite, WebPage, HairSalon (Google-supported LocalBusiness subtype) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -163,8 +163,7 @@
         "inLanguage": "en-US"
       },
       {
-        "@type": "LocalBusiness",
-        "additionalType": "https://schema.org/Barbershop",
+        "@type": "HairSalon",
         "@id": "https://kutsbylee.com/#business",
         "name": "Kuts By Lee",
         "alternateName": "Kuts By Lee Barber",
@@ -275,40 +274,37 @@
             ]
           },
           "name": "Book a Kut Online"
-        }
-      },
-      {
-        "@type": "AggregateRating",
-        "@id": "https://kutsbylee.com/#aggregate-rating",
-        "ratingValue": 5,
-        "reviewCount": 3,
-        "bestRating": 5,
-        "worstRating": 1,
-        "itemReviewed": { "@type": "LocalBusiness", "@id": "https://kutsbylee.com/#business", "name": "Kuts By Lee" }
-      },
-      {
-        "@type": "Review",
-        "@id": "https://kutsbylee.com/#review-cody",
-        "itemReviewed": { "@type": "LocalBusiness", "@id": "https://kutsbylee.com/#business", "name": "Kuts By Lee" },
-        "author": { "@type": "Person", "name": "Cody" },
-        "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
-        "reviewBody": "Kuts By Lee has always had my back when it comes to a fresh cut. Anytime I reach out, he responds right away and I usually get a cut the same day. I highly recommend Lee for your next haircut. His house calls are super affordable and convenient!"
-      },
-      {
-        "@type": "Review",
-        "@id": "https://kutsbylee.com/#review-amari",
-        "itemReviewed": { "@type": "LocalBusiness", "@id": "https://kutsbylee.com/#business", "name": "Kuts By Lee" },
-        "author": { "@type": "Person", "name": "Amari" },
-        "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
-        "reviewBody": "Lee cut me how I expected and got me fast and great service and is worth the money! Best barber in douglasville! Highly recommend. Also great communication"
-      },
-      {
-        "@type": "Review",
-        "@id": "https://kutsbylee.com/#review-david",
-        "itemReviewed": { "@type": "LocalBusiness", "@id": "https://kutsbylee.com/#business", "name": "Kuts By Lee" },
-        "author": { "@type": "Person", "name": "David" },
-        "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
-        "reviewBody": "Been here since 2021 and he's never messed me up. Gone head and give my guy a shot you'll never have another barber again trust me the love and passion is there"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": 5,
+          "reviewCount": 3,
+          "bestRating": 5,
+          "worstRating": 1
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": { "@type": "Person", "name": "Cody" },
+            "datePublished": "2024-01-15",
+            "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
+            "reviewBody": "Kuts By Lee has always had my back when it comes to a fresh cut. Anytime I reach out, he responds right away and I usually get a cut the same day. I highly recommend Lee for your next haircut. His house calls are super affordable and convenient!"
+          },
+          {
+            "@type": "Review",
+            "author": { "@type": "Person", "name": "Amari" },
+            "datePublished": "2024-06-20",
+            "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
+            "reviewBody": "Lee cut me how I expected and got me fast and great service and is worth the money! Best barber in douglasville! Highly recommend. Also great communication"
+          },
+          {
+            "@type": "Review",
+            "author": { "@type": "Person", "name": "David" },
+            "datePublished": "2024-09-10",
+            "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
+            "reviewBody": "Been here since 2021 and he's never messed me up. Gone head and give my guy a shot you'll never have another barber again trust me the love and passion is there"
+          }
+        ]
       }
     ]
   }
